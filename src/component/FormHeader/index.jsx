@@ -4,28 +4,28 @@ import TextFieldFilter from '../TextFieldFilter';
 // import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { BsCart4, BsGrid, BsList } from 'react-icons/bs'
 
-function SearchComponent() {
-    const [searchValue, setSearchValue] = useState('');
-    const [isGridView, setIsGridView] = useState(false)
+function SearchComponent({
+    isGridView,
+    setIsGridView
+}) {
+    const [searchValue, setSearchValue] = useState("");
     return (
         <Box p={2}>
             <form
             // onSubmit={handleFilter}
             >
-                <Grid container alignItems="center" spacing={2} >
+                <Grid container justifyContent="center" textAlign="center" spacing={2} >
                     <Grid
                         item
                         xs={11}
-                        md={3.5}
+                        md={3}
                         lg={3}
                         xl={11}
                     >
                         <TextFieldFilter
                             label="Search by menu name. . ."
                             filter={searchValue}
-                            setFilter={(value) => {
-                                setSearchValue(value);
-                            }}
+                            setfilter={(value) => setSearchValue(value)}
                         />
                     </Grid>
                     <Grid item>
@@ -50,4 +50,4 @@ function SearchComponent() {
     )
 }
 
-export default SearchComponent
+export default React.memo(SearchComponent)

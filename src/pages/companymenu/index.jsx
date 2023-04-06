@@ -26,9 +26,7 @@ function CompanyMenu() {
   const id = new URLSearchParams(search).get("companyId");
 
   useEffect(() => {
-    if (id) {
-      getCompanyProfile(id)
-    }
+    getCompanyProfile(id)
     getCompanyMenuOnly(id)
   }, [])
 
@@ -36,14 +34,14 @@ function CompanyMenu() {
     <Page title="Company Banner">
       <Container maxWidth="xl">
         <Grid container spacing={3}>
-          {/* <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12}>
             {
-              profileData !== null || profileData !==undefined ? 
+              profileData !== null ? 
                 // <ImageComponent key={index} post={item} />
                 <Banner2 profile={profileData} />
                : ''
             }
-          </Grid> */}
+          </Grid>
 
           <Grid item xs={12} md={12}>
             <Box textAlign="center" >

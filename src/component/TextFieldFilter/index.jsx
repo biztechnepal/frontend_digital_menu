@@ -12,7 +12,7 @@ export default function TextFieldFilter(props) {
   const {
     label,
     filter,
-    setFilter
+    setfilter
   } = props;
 
   return (
@@ -21,9 +21,9 @@ export default function TextFieldFilter(props) {
       variant='outlined'
       size="small"
       fullWidth
-      label={label}
-      value={filter}
-      onChange={(e) => setFilter(e.target.value)}
+      // label={label}
+      // value={filter}
+      onChange={(e) => setfilter(e.target.value)}
       InputProps={{
         endAdornment:
           filter ?
@@ -32,7 +32,7 @@ export default function TextFieldFilter(props) {
               <IconButton
                 aria-label="toggle password visibility"
                 onClick={() => {
-                  setFilter("")
+                  setfilter("")
                 }}
                 edge="end"
               >

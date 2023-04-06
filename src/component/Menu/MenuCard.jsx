@@ -11,7 +11,7 @@ MenuCard.propTypes = {
 };
 
 export default function MenuCard({ menu }) {
-    const { name, image, unit, status, priceSale } = menu;
+    const { name, image, unit, status, description } = menu;
 
     //   const linkTo = PATH_DASHBOARD.menu.view(paramCase(name));
     const linkTo = '/menu/details';
@@ -20,9 +20,10 @@ export default function MenuCard({ menu }) {
         <Grow
             in={true}
             style={{ transformOrigin: '0 0 0' }}
-            timeout={1000}
+            timeout={500}
         >
-            <Card >
+            <Card sx={{ borderRadius: '2.5%', boxShadow: '0 0 2px 0 rgba(145, 158, 171, 0.2),0 22px 24px -4px rgba(145, 158, 171, 0.12)' }}>
+
                 <Box sx={{ position: 'relative' }}>
                     {status && (
                         <Label
@@ -39,15 +40,12 @@ export default function MenuCard({ menu }) {
                             {status}
                         </Label>
                     )}
-                    <Image alt={name}  src={image} ratio="6/4" />
+                    <Image alt={name} src={image} ratio="1/1" />
                 </Box>
 
-                <Stack spacing={2} sx={{ p: 3 }}>
-                    {/* <Link to={linkTo} color="inherit" component={RouterLink}> */}
-                    <Typography variant="h6" noWrap>
-                        {name}
-                    </Typography>
-                    {/* </Link> */}
+                <Stack spacing={1} sx={{ p: 2 }}>
+                    <Typography variant="h6" noWrap>{name}</Typography>
+                    <Typography variant="span" noWrap>{description}</Typography>
 
                     <Stack direction="row" alignItems="right" justifyContent="right">
                         <Stack direction="row" spacing={0.5}>

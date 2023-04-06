@@ -2,11 +2,25 @@ import { alpha, styled } from '@mui/material/styles';
 import { Box, Avatar, SpeedDial, Typography, SpeedDialAction, Stack, Card, Button, CardContent } from '@mui/material';
 import Image from '../../component/Image';
 import useResponsive from '../../hook/useResponsive';
+import { ENDPOINTS } from '../../utlis/endpoints';
 
-export default function Banner2({ post }) {
+export default function Banner2({
+    profile
+}) {
+    const {
+        companyLogoPath,
+        name,
+        country,
+        mobile,
+        city,
+        panNo,
+        email,
+        id,
+        cover = "/assets/bg.jpg" }
+        = profile;
 
     const MyBox = styled(Box)(({ theme }) => ({
-        backgroundImage: `url("${post.cover}")`,
+        backgroundImage: `url("${cover}")`,
         backgroundSize: 'cover',
         color: 'black',
         display: 'flex',
@@ -36,7 +50,7 @@ export default function Banner2({ post }) {
         },
     }));
 
-    const { cover, name, country, mobile, city, author, createdAt } = post;
+    console.log(profile)
     const isDesktop = useResponsive('up', 'sm');
     const RootStyle = styled(Card)(({ theme }) => ({
         boxShadow: 'none',
@@ -52,9 +66,13 @@ export default function Banner2({ post }) {
     }));
     return (
         <>
-            <MyBox>
+            <Box sx={{
+                backgroundImage: `url("${cover}")`,
+                backgroundSize: 'cover',
+            }}>
                 <Box
                     sx={{
+                        backdropFilter: "blur(2px)",
                         position: "relative",
                         display: 'flex',
                         flexDirection: 'column',
@@ -66,7 +84,7 @@ export default function Banner2({ post }) {
                         <Avatar
                             sx={{ width: 120, height: 120 }}
                             alt="logo"
-                            src={author.logo}
+                            src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADCOMPANYLOGO}/${id}`}
                         />
                     </Box>
                     <Box sx={{ justifyContent: "center", textAlign: "center", borderRadius: '5px', backgroundColor: "#534f4fd6", pl: 15, pr: 15, mb: 2 }}>
@@ -76,7 +94,7 @@ export default function Banner2({ post }) {
                         <Typography variant="body2" sx={{ color: 'white' }}>{country}</Typography>
                     </Box>
                 </Box>
-            </MyBox>
+            </Box>
 
         </>
     );

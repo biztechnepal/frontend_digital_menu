@@ -1,3 +1,4 @@
+export const HOST_API = import.meta.env.VITE_APP_HOST_API_KEY || '';
 
 export const HEADER = {
   MOBILE_HEIGHT: 64,

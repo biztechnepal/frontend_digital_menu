@@ -1,0 +1,71 @@
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { BiFolderMinus, BiTrash } from 'react-icons/bi';
+import Image from '../Image';
+import { Card, Container, Grow } from '@mui/material';
+
+function generate(element) {
+  return [0, 1, 2].map((value) =>
+    React.cloneElement(element, {
+      key: value,
+    }),
+  );
+}
+
+const Demo = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+}));
+
+export default function MenuListView({ menu }) {
+  const { name, image, unit, status, priceSale } = menu;
+
+  const [dense, setDense] = React.useState(false);
+  const [secondary, setSecondary] = React.useState(false);
+  const fontStyle = {
+    fontSize: '1em',
+    
+  }
+  return (
+    <Grow
+      in={true}
+      style={{ transformOrigin: '0 0 0' }}
+      timeout={500}
+    >
+      <Box sx={{ flexGrow: 1, overflow: 'scroll' }}>
+        <List dense={dense}>
+        <Grid container >
+        <ListItem
+            secondaryAction={
+              <Typography variant='caption' sx={fontStyle}>Rs. {unit}/-</Typography>
+            }
+          >
+            <Typography variant='caption' sx={fontStyle} noWrap>{name}</Typography>
+            {/* <ListItemAvatar>
+                    <Avatar sx={{ borderRadius: "10%", width: 50, height: 50 }}>
+                      <Image alt={name} src={image} ratio="3/4" />
+                    </Avatar>
+                  </ListItemAvatar> */}
+            {/* <ListItemText
+                    primary={name}
+                    secondary={null}
+                  /> */}
+          </ListItem>
+        </Grid>
+        </List>
+      </Box>
+    </Grow>
+  );
+}
