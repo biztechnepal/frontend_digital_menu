@@ -41,7 +41,7 @@ export default function Image({ ratio, disabledEffect = false, effect = 'blur', 
           wrapperClassName="wrapper"
           effect={disabledEffect ? undefined : effect}
           placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
-          sx={{ width: 1, height: 1, objectFit: 'cover' }}
+          sx={{ width: 1, height: 1, objectFit: 'contain' }}
           {...other}
         />
       </Box>

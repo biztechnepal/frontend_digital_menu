@@ -30,13 +30,18 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function MenuListView({ menu }) {
-  const { name, image, unit, status, priceSale } = menu;
+  const { name, image, unit, status, description } = menu;
 
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
   const fontStyle = {
     fontSize: '1em',
-    
+
+  }
+  const descriptionStyle = {
+    width:"1000px",
+    mt:"-10px",
+    color: "#736e6e"
   }
   return (
     <Grow
@@ -46,24 +51,28 @@ export default function MenuListView({ menu }) {
     >
       <Box sx={{ flexGrow: 1, overflow: 'scroll' }}>
         <List dense={dense}>
-        <Grid container >
-        <ListItem
-            secondaryAction={
-              <Typography variant='caption' sx={fontStyle}>Rs. {unit}/-</Typography>
-            }
-          >
-            <Typography variant='caption' sx={fontStyle} noWrap>{name}</Typography>
-            {/* <ListItemAvatar>
+          <Grid container >
+            <ListItem
+              secondaryAction={
+                <Typography variant='caption' sx={fontStyle}>Rs. {unit}/-</Typography>
+              }
+            >
+              <Typography variant='h6' sx={fontStyle} noWrap>{name}</Typography>
+              {/* <ListItemAvatar>
                     <Avatar sx={{ borderRadius: "10%", width: 50, height: 50 }}>
                       <Image alt={name} src={image} ratio="3/4" />
                     </Avatar>
                   </ListItemAvatar> */}
-            {/* <ListItemText
+              {/* <ListItemText
                     primary={name}
                     secondary={null}
                   /> */}
-          </ListItem>
-        </Grid>
+            </ListItem>
+            <ListItem>
+              <Typography variant='caption' sx={descriptionStyle} >{description}</Typography>
+            </ListItem>
+
+          </Grid>
         </List>
       </Box>
     </Grow>

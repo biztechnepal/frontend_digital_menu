@@ -16,7 +16,7 @@ export default function Banner2({
         panNo,
         email,
         id,
-        cover = "/assets/bg.jpg" }
+        cover = "/assets/banner.png" }
         = profile;
 
     const MyBox = styled(Box)(({ theme }) => ({
@@ -67,22 +67,28 @@ export default function Banner2({
     return (
         <>
             <Box sx={{
+                backgroundRepeat:'no-repeat',
                 backgroundImage: `url("${cover}")`,
+                backgroundPosition:'top',
+                backgroundPositionY: '52%',
                 backgroundSize: 'cover',
+                borderBottomLeftRadius:'10px',
+                borderBottomRightRadius:'10px',
+                boxShadow: '0 0 2px 0 rgba(145, 158, 171, 0.2),0 22px 24px -4px rgba(145, 158, 171, 0.12)'
             }}>
                 <Box
                     sx={{
-                        backdropFilter: "blur(2px)",
+                        backdropFilter: "blur(2.5px)",
                         position: "relative",
-                        display: 'flex',
-                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
                     }}
                 >
                     <Box p={2}>
                         <Avatar
-                            sx={{ width: 120, height: 120 }}
+                            sx={{ width: 120, height: 120, backgroundColor: "white" }}
                             alt="logo"
                             src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADCOMPANYLOGO}/${id}`}
                         />

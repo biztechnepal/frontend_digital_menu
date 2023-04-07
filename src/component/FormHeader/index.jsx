@@ -19,8 +19,8 @@ function SearchComponent({
                         item
                         xs={11}
                         md={3}
-                        lg={3}
-                        xl={11}
+                        lg={12}
+                        xl={8}
                     >
                         <TextFieldFilter
                             label="Search by menu name. . ."

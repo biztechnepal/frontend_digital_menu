@@ -29,10 +29,9 @@ function CompanyMenu() {
     getCompanyProfile(id)
     getCompanyMenuOnly(id)
   }, [])
-
   return (<>
-    <Page title="Company Banner">
-      <Container maxWidth="xl">
+    <Page title="Company Menu" sx={{backgroundColor:"#fdfdfd"}}>
+      <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
             {
