@@ -18,10 +18,10 @@ export default defineConfig({
   //   exclude: ['@vite/client', '@vite/env'],
   // },
   base:'/menu/',
-  server:{
-    port:3000,
-    hmr:{
-      overlay:false
-    }
-  }
+  server: {
+    hmr: {
+      protocol: 'ws',
+      port: 3000,
+    },
+  },
 })
