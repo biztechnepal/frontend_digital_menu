@@ -8,6 +8,7 @@ export default defineConfig({
   define:{
     'process.env': {}
   },
+  base:'/menu/'
   // server:{
   //   hmr:{
   //     overlay:false

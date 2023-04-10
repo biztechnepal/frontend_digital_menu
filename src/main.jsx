@@ -8,9 +8,9 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <ViewContextProvider> */}
-    <BrowserRouter basename='/front'>
+    <BrowserRouter basename='/menu'>
       <App />
     </BrowserRouter>
     {/* </ViewContextProvider> */}
   </React.StrictMode>
-)
+);
