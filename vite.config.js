@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react()],
   define: {
     'process.env': {},
+    
     __DEFINES__: {
       API_BASE_URL: 'http://52.221.216.231',
       ENABLE_FEATURE_X: true,
@@ -16,10 +17,11 @@ export default defineConfig({
   // optimizeDeps:{
   //   exclude: ['@vite/client', '@vite/env'],
   // },
-  base:'/menu/'
-  // server:{
-  //   hmr:{
-  //     overlay:false
-  //   }
-  // }
+  base:'/menu/',
+  server:{
+    port:3000,
+    hmr:{
+      overlay:false
+    }
+  }
 })
