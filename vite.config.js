@@ -8,9 +8,16 @@ export default defineConfig({
   define:{
     'process.env': {}
   },
-  optimizeDeps:{
-    exclude: ['@vite/client', '@vite/env'],
+  define: {
+    __DEFINES__: {
+      API_BASE_URL: 'http://52.221.216.231',
+      ENABLE_FEATURE_X: true,
+      ENABLE_FEATURE_Y: false,
+    },
   },
+  // optimizeDeps:{
+  //   exclude: ['@vite/client', '@vite/env'],
+  // },
   base:'/menu/'
   // server:{
   //   hmr:{
