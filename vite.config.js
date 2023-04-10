@@ -1,31 +1,26 @@
-import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-import ReactRefreshPlugin  from '@vitejs/plugin-react-refresh'
+import { defineConfig } from 'vite';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/menu/',
+  plugins: [reactRefresh()],
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
+    minify: 'terser',
     sourcemap: true,
-  },
-  define: {
-    'process.env': {},
-    __DEFINES__: {
-      API_BASE_URL: 'http://52.221.216.231',
-      ENABLE_FEATURE_X: true,
-      ENABLE_FEATURE_Y: false,
+    rollupOptions: {
+      input: resolve(__dirname, 'index.html'),
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+        },
+      },
     },
   },
   server: {
-    hmr: {
-      protocol: 'ws',
-      // port: 3000,gigit 
-    },
+    host: '0.0.0.0',
+    port: 3000,
+    watch: false,
   },
-  // optimizeDeps:{
-  //   exclude: ['@vite/client', '@vite/env'],
-  // },
-  // emptyOutDir: true,
-  plugins: [ReactRefreshPlugin()],
-})
+});
