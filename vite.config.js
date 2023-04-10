@@ -5,10 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   emptyOutDir: true ,
   plugins: [react()],
-  define:{
-    'process.env': {}
-  },
   define: {
+    'process.env': {},
     __DEFINES__: {
       API_BASE_URL: 'http://52.221.216.231',
       ENABLE_FEATURE_X: true,
