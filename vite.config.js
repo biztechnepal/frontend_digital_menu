@@ -8,6 +8,9 @@ export default defineConfig({
   define:{
     'process.env': {}
   },
+  optimizeDeps:{
+    exclude: ['@vite/client', '@vite/env'],
+  },
   base:'/menu/'
   // server:{
   //   hmr:{
