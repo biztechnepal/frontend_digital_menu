@@ -101,7 +101,7 @@ function CompanyMenu() {
               {!isGridView && menuData?.length > 0 && (loading ? [...Array(4)] : menuData)?.map((item, index) =>
                 item ?
                   <React.Fragment key={index}>
-                    <Typography variant="h5">{item.menuItemGroupName}</Typography>
+                    <Typography variant="h5">{item.name}</Typography>
                     {item.menuGroupItems.map((menuItem, i) =>
                       <MenuListView key={index} menu={menuItem} />
                     )}

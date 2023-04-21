@@ -16,7 +16,7 @@ CompanyMenuCard.propTypes = {
 };
 
 export default function CompanyMenuCard({ menuItem }) {
-  const { name, price, description, status, menuItemId } = menuItem;
+  const { menuItemName, price, description, status, menuItemId } = menuItem;
   const linkTo = PATH_DASHBOARD.root;
   const imagearr = [
     "/assets/burgerbg.jpg",
@@ -58,11 +58,11 @@ export default function CompanyMenuCard({ menuItem }) {
               {status}
             </Label>
           )}
-          <Image alt={name} src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${menuItemId}`} ratio="1/1" />
+          <Image alt={menuItemName} src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${menuItemId}`} ratio="1/1" />
         </Box>
 
         <Stack spacing={1} sx={{ p: 2 }}>
-          <Typography variant="h6" noWrap>{name}</Typography>
+          <Typography variant="h6" noWrap>{menuItemName}</Typography>
           <Typography variant="caption" noWrap>{description}</Typography>
 
           <Stack direction="row" alignItems="right" justifyContent="right">
