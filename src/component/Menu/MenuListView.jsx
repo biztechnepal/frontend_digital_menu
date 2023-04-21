@@ -30,7 +30,8 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function MenuListView({ menu }) {
-  const { name, image, unit, status, description } = menu;
+  const { menuItemName, image, price, status, description } = menu;
+  console.log(menu)
 
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
@@ -39,8 +40,8 @@ export default function MenuListView({ menu }) {
 
   }
   const descriptionStyle = {
-    width:"1000px",
-    mt:"-10px",
+    width: "1000px",
+    mt: "-10px",
     color: "#736e6e"
   }
   return (
@@ -49,15 +50,15 @@ export default function MenuListView({ menu }) {
       style={{ transformOrigin: '0 0 0' }}
       timeout={500}
     >
-      <Box sx={{ flexGrow: 1, overflow: 'scroll' }}>
+      <Box sx={{ flexGrow: 1 }}>
         <List dense={dense}>
           <Grid container >
             <ListItem
               secondaryAction={
-                <Typography variant='caption' sx={fontStyle}>Rs. {unit}/-</Typography>
+                <Typography variant='caption' sx={fontStyle}>Rs. {price}/-</Typography>
               }
             >
-              <Typography variant='h6' sx={fontStyle} noWrap>{name}</Typography>
+              <Typography variant='h6' sx={fontStyle} noWrap>{menuItemName}</Typography>
               {/* <ListItemAvatar>
                     <Avatar sx={{ borderRadius: "10%", width: 50, height: 50 }}>
                       <Image alt={name} src={image} ratio="3/4" />

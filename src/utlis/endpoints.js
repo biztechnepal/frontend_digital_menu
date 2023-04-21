@@ -7,9 +7,10 @@ export const COMPANY_API_ROUTE_NAME = "QrMenuCompany/WebApi"
 export const ENDPOINTS = {
     LOGIN: `${COMPANY_API_ROUTE_NAME}/Auth/Login`,
     USER: `${COMPANY_API_ROUTE_NAME}/Users`,
-    DOWNLOADCOMPANYBANNER: `${COMPANY_API_ROUTE_NAME}/Companies/DownloadCompanyBanner`,
-    DOWNLOADCOMPANYLOGO: `${COMPANY_API_ROUTE_NAME}/Companies//DownloadCompanyLogo`,
-    MENUITEMDOWNLOADIMAGE: `${COMPANY_API_ROUTE_NAME}/MenuItems/DownloadImage`,
-    COMPANYMENU: `${COMPANY_API_ROUTE_NAME}/Companies/CompanyMenu`,
+    DOWNLOADCOMPANYBANNER: `${COMPANY_API_ROUTE_NAME}/DownloadImages/DownloadCompanyBanner`,
+    DOWNLOADCOMPANYLOGO: `${COMPANY_API_ROUTE_NAME}/DownloadImages//DownloadCompanyLogo`,
+    MENUITEMDOWNLOADIMAGE: `${COMPANY_API_ROUTE_NAME}/DownloadImages/DownloadItemImage`,
+    // COMPANYMENU: `${COMPANY_API_ROUTE_NAME}/Companies/CompanyMenu`,
+    PUBLICMENU: `${COMPANY_API_ROUTE_NAME}/PublicMenu`,
     COMPANYPROFILE: `${COMPANY_API_ROUTE_NAME}/Companies/CompanyProfile`,
 }

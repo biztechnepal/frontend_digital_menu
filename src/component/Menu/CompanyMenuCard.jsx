@@ -15,21 +15,21 @@ CompanyMenuCard.propTypes = {
   menuItem: PropTypes.object,
 };
 
-export default function CompanyMenuCard({  menuItem }) {
-  const { name, unit, description, status, id } = menuItem;
+export default function CompanyMenuCard({ menuItem }) {
+  const { name, price, description, status, menuItemId } = menuItem;
   const linkTo = PATH_DASHBOARD.root;
   const imagearr = [
     "/assets/burgerbg.jpg",
     "/assets/burgerbg1.png",
     "/assets/pizza.jpg",
   ]
- 
+
   // useEffect(async ()=>{
   //   const image =await getMenuItemImage(id)
   //   console.log('IMAGE URL',image)
   //   setImage(URL.createObjectURL(image));
   // },[])
-  
+
   function generateRandom(maxLimit = imagearr.length) {
     let rand = Math.random() * maxLimit;
     rand = Math.floor(rand); // 99
@@ -58,7 +58,7 @@ export default function CompanyMenuCard({  menuItem }) {
               {status}
             </Label>
           )}
-          <Image alt={name} src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${id}`} ratio="1/1" />
+          <Image alt={name} src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${menuItemId}`} ratio="1/1" />
         </Box>
 
         <Stack spacing={1} sx={{ p: 2 }}>
@@ -67,7 +67,7 @@ export default function CompanyMenuCard({  menuItem }) {
 
           <Stack direction="row" alignItems="right" justifyContent="right">
             <Stack direction="row" spacing={0.5}>
-              <Typography sx={{ fontSize: 15 }} variant="subtitle1">Rs: {unit}</Typography>
+              <Typography sx={{ fontSize: 15 }} variant="subtitle1">Rs: {price}</Typography>
             </Stack>
           </Stack>
         </Stack>

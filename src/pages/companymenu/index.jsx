@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import Page from '../../component/Page'
 import Banner2 from '../../component/Header/Banner2'
 import MenuCard from '../../component/Menu/MenuCard'
-import { menuData } from '../../mockdata'
+// import { menuData } from '../../mockdata'
 import FormHeader from '../../component/FormHeader'
 import FooterComponent from '../../component/Footer'
 import MenuListView from '../../component/Menu/MenuListView'
@@ -18,27 +18,32 @@ import useCompany from '../../hook/useCompany'
 // Search
 // MenuGrid
 // Footer
+// http://localhost:3000/menu/company/?menuId=6441426f234f361402ad2e7d&&companyId=643e44130a4d8d09d656d216
 function CompanyMenu() {
   const [isGridView, setIsGridView] = useState(false)
-  const { getCompanyMenuOnly, loading, data: companyMenuItems } = useMenu();
-  const { getCompanyProfile, loading: profileLoading, data: profileData } = useCompany();
+  const { getCompanyMenuOnly, loading, menuData, profile } = useMenu();
   const { search } = useLocation();
-  const id = new URLSearchParams(search).get("companyId");
-
-  useEffect(() => {
-    getCompanyProfile(id)
-    getCompanyMenuOnly(id)
+  const id = new URLSearchParams(search).get("menuId");
+  const companyId = new URLSearchParams(search).get("companyId");
+  // 6441426f234f361402ad2e7d
+  useEffect( () => {
+     getCompanyMenuOnly({
+      menuId: id,
+      companyId: companyId
+    })
   }, [])
+  console.log(menuData)
+  console.log(profile)
   return (<>
-    <Page title="Company Menu" sx={{backgroundColor:"#fdfdfd"}}>
+    <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
             {
-              profileData !== null ? 
+              profile !== null ?
                 // <ImageComponent key={index} post={item} />
-                <Banner2 profile={profileData} />
-               : ''
+                <Banner2 profile={profile} />
+                : ''
             }
           </Grid>
 
@@ -52,12 +57,11 @@ function CompanyMenu() {
             <FormHeader isGridView={isGridView} setIsGridView={setIsGridView} />
           </Grid>
           <Grid item xs={12} md={12}>
-            {isGridView && menuData.length > 0 && (loading ? [...Array(4)] : companyMenuItems)?.map((item, index) =>
+            {isGridView && menuData?.length > 0 && (loading ? [...Array(4)] : menuData)?.map((item, index) =>
               item ?
                 <React.Fragment key={index}>
-
                   <Stack mb={2}>
-                    <Typography variant="h5">{item.menuItemGroupName}</Typography>
+                    <Typography variant="h5">{item.name}</Typography>
                   </Stack>
                   <Box
                     mb={5}
@@ -72,7 +76,7 @@ function CompanyMenu() {
                       },
                     }}
                   >
-                    {item?.menuItems.map((menuItem, i) =>
+                    {item?.menuGroupItems?.map((menuItem, i) =>
                       <CompanyMenuCard key={i} menuItemGroup={{ menuItemGroupId: item.menuItemGroupId }} menuItem={menuItem} />
                     )}
                   </Box>
@@ -94,11 +98,11 @@ function CompanyMenu() {
                 },
               }}
             >
-              {!isGridView && menuData.length > 0 && (loading ? [...Array(4)] : companyMenuItems)?.map((item, index) =>
+              {!isGridView && menuData?.length > 0 && (loading ? [...Array(4)] : menuData)?.map((item, index) =>
                 item ?
                   <React.Fragment key={index}>
                     <Typography variant="h5">{item.menuItemGroupName}</Typography>
-                    {item.menuItems.map((menuItem, i) =>
+                    {item.menuGroupItems.map((menuItem, i) =>
                       <MenuListView key={index} menu={menuItem} />
                     )}
                   </React.Fragment>

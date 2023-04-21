@@ -9,8 +9,8 @@ export const createApiEndpoint = (endpoints) => {
       axiosInstance.get(url, {
         params: { ...params }
       }),
-    fetchById: id => axiosInstance.get(
-      `${url}/${id}`
+    fetchById: (id, params) => axiosInstance.get(
+      `${url}/${id}`, { params: { ...params } }
     ),
     fetchImage: id => axiosInstance.get(`${url}/${id}`, {
       responseType: 'blob'

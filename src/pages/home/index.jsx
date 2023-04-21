@@ -25,26 +25,18 @@ function CompanyMenu() {
   const { search } = useLocation();
   const id = new URLSearchParams(search).get("companyId");
 
-  useEffect(() => {
-    if (id) {
-      getCompanyProfile(id)
-    }
-    getCompanyMenuOnly(id)
-  }, [])
+  // useEffect(() => {
+  //   if (id) {
+  //     getCompanyProfile(id)
+  //   }
+  //   getCompanyMenuOnly(id)
+  // }, [])
 
   return (<>
     <Page title="Company Banner">
       <Container maxWidth="xl">
-        <Grid container spacing={3}>
-          {/* <Grid item xs={12} md={12}>
-            {
-              profileData !== null || profileData !==undefined ? 
-                // <ImageComponent key={index} post={item} />
-                <Banner2 profile={profileData} />
-               : ''
-            }
-          </Grid> */}
-
+        <h1>home</h1>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
             <Box textAlign="center" >
               <Typography variant="h5" sx={{ color: 'black' }}>Our Menu</Typography>
@@ -107,26 +99,14 @@ function CompanyMenu() {
                   </React.Fragment>
                   : '. . .'
               )}
-              {/* {
-                !isGridView && menuData.length > 0 ? <>
-                  <Typography sx={{ mb: 2, textAlign: "center" }} variant="h5" component="div">
-                    Menu are listed below
-                  </Typography>
-                  {
-                    menuData.map(((item, index) =>
-                      <>
-                        <MenuListView key={index} menu={item} /></>
-                    ))
-                  }
-                </> : ''
-              } */}
             </Box>
           </Grid>
 
           <Grid item xs={12} md={12}>
             <FooterComponent />
           </Grid>
-        </Grid>
+        </Grid> */}
+           
       </Container>
     </Page>
   </>
@@ -134,3 +114,16 @@ function CompanyMenu() {
 }
 
 export default CompanyMenu
+// {
+//   !isGridView && menuData.length > 0 ? <>
+//     <Typography sx={{ mb: 2, textAlign: "center" }} variant="h5" component="div">
+//       Menu are listed below
+//     </Typography>
+//     {
+//       menuData.map(((item, index) =>
+//         <>
+//           <MenuListView key={index} menu={item} /></>
+//       ))
+//     }
+//   </> : ''
+// }
