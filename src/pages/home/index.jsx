@@ -1,9 +1,6 @@
 import { Box, Card, Container, Grid, Stack, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import Page from '../../component/Page'
-import Banner2 from '../../component/Header/Banner2'
-import MenuCard from '../../component/Menu/MenuCard'
-import { menuData } from '../../mockdata'
 import FormHeader from '../../component/FormHeader'
 import FooterComponent from '../../component/Footer'
 import MenuListView from '../../component/Menu/MenuListView'
@@ -12,63 +9,106 @@ import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import CompanyMenuCard from '../../component/Menu/CompanyMenuCard'
 import useCompany from '../../hook/useCompany'
+import { menuData } from '../../mockdata'
+import MenuCard from '../../component/Card'
+import PopupAdvertise from '../../component/Popup'
+import Banner2 from '../../component/Header/Banner2'
+import CompanyProfileHeader from '../../component/Header/CompanyProfileHeader'
+import useScroll from '../../hook/useScroll'
+import StickyNavHeader from '../../component/Header/StickyHeader'
 
 // Banner
 // Category
 // Search
 // MenuGrid
 // Footer
-function CompanyMenu() {
+// http://localhost:3000/menu/company/?menuId=6441426f234f361402ad2e7d&&companyId=643e44130a4d8d09d656d216
+function Home() {
   const [isGridView, setIsGridView] = useState(false)
-  const { getCompanyMenuOnly, loading, data: companyMenuItems } = useMenu();
-  const { getCompanyProfile, loading: profileLoading, data: profileData } = useCompany();
+  const [open, setOpen] = useState(false)
+  const { getCompanyMenuOnly, loading, profile } = useMenu();
   const { search } = useLocation();
-  const id = new URLSearchParams(search).get("companyId");
+  const menuSlug = new URLSearchParams(search).get("menuId");
+  const companySlug = new URLSearchParams(search).get("companyId");
 
-  // useEffect(() => {
-  //   if (id) {
-  //     getCompanyProfile(id)
-  //   }
-  //   getCompanyMenuOnly(id)
-  // }, [])
+  // .stickyHeader{
+  //   position: fixed;
+  //   top:0;
+  //   left:0;
+  //   width: 100%;
+  //   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  // }
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    console.log(position)
+    // setScrollPosition(position);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  useEffect(() => {
+    getCompanyMenuOnly({
+      menuId: menuSlug,
+      companyId: companySlug
+    })
+  }, [])
+
+  useEffect(() => {
+    // setInterval(() => {
+    setOpen(true)
+    // }, 5000)
+  }, [])
   return (<>
-    <Page title="Company Banner">
-      <Container maxWidth="xl">
-        <h1>home</h1>
-        {/* <Grid container spacing={3}>
+    <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+      <Container maxWidth="lg">
+        <Grid item xs={12} md={12} >
+          {
+            profile !== null ?
+              // <ImageComponent key={index} post={item} />
+              // <Banner2 profile={profile} />
+              // <CompanyProfileHeader profile={profile} />
+              <StickyNavHeader profile={profile} />
+
+              : ''
+          }
+
+          {/* 
           <Grid item xs={12} md={12}>
             <Box textAlign="center" >
               <Typography variant="h5" sx={{ color: 'black' }}>Our Menu</Typography>
             </Box>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} md={12}>
             <FormHeader isGridView={isGridView} setIsGridView={setIsGridView} />
           </Grid>
           <Grid item xs={12} md={12}>
-            {isGridView && menuData.length > 0 && (loading ? [...Array(4)] : companyMenuItems)?.map((item, index) =>
+            {isGridView && menuData?.length > 0 && (loading ? [...Array(4)] : menuData)?.map((item, index) =>
               item ?
                 <React.Fragment key={index}>
-
-                  <Stack mb={2}>
-                    <Typography variant="h5">{item.menuItemGroupName}</Typography>
+                  <Stack mb={1}>
+                    <Typography variant="h5">{item.name}</Typography>
                   </Stack>
                   <Box
-                    mb={5}
+                    mb={2}
                     sx={{
                       display: 'grid',
-                      gap: 3,
+                      gap: 2,
                       gridTemplateColumns: {
-                        xs: 'repeat(2, 1fr)',
-                        sm: 'repeat(4, 1fr)',
-                        md: 'repeat(5, 1fr)',
-                        lg: 'repeat(6, 1fr)',
+                        xs: 'repeat(1, 1fr)',
+                        sm: 'repeat(1, 1fr)',
+                        md: 'repeat(3, 1fr)',
+                        lg: 'repeat(2, 1fr)',
                       },
                     }}
                   >
-                    {item?.menuItems.map((menuItem, i) =>
-                      <CompanyMenuCard key={i} menuItemGroup={{ menuItemGroupId: item.menuItemGroupId }} menuItem={menuItem} />
+                    {item?.menuGroupItems?.map((menuItem, i) =>
+                      <MenuCard key={i} menuItemGroup={{ menuItemGroupId: item.menuItemGroupId }} menuItem={menuItem} />
                     )}
                   </Box>
                 </React.Fragment>
@@ -89,11 +129,11 @@ function CompanyMenu() {
                 },
               }}
             >
-              {!isGridView && menuData.length > 0 && (loading ? [...Array(4)] : companyMenuItems)?.map((item, index) =>
+              {!isGridView && menuData?.length > 0 && (loading ? [...Array(4)] : menuData)?.map((item, index) =>
                 item ?
                   <React.Fragment key={index}>
-                    <Typography variant="h5">{item.menuItemGroupName}</Typography>
-                    {item.menuItems.map((menuItem, i) =>
+                    <Typography variant="h5">{item.name}</Typography>
+                    {item.menuGroupItems.map((menuItem, i) =>
                       <MenuListView key={index} menu={menuItem} />
                     )}
                   </React.Fragment>
@@ -105,25 +145,13 @@ function CompanyMenu() {
           <Grid item xs={12} md={12}>
             <FooterComponent />
           </Grid>
-        </Grid> */}
-           
+        </Grid>
       </Container>
+      <PopupAdvertise url='https://www.youtube.com/embed/xPPLbEFbCAo' open={open} onClose={() => setOpen(false)} />
     </Page>
+
   </>
   )
 }
 
-export default CompanyMenu
-// {
-//   !isGridView && menuData.length > 0 ? <>
-//     <Typography sx={{ mb: 2, textAlign: "center" }} variant="h5" component="div">
-//       Menu are listed below
-//     </Typography>
-//     {
-//       menuData.map(((item, index) =>
-//         <>
-//           <MenuListView key={index} menu={item} /></>
-//       ))
-//     }
-//   </> : ''
-// }
+export default Home

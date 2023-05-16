@@ -1,8 +1,7 @@
-import { Box, Card, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Card, Container, Divider, Grid, Stack, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import Page from '../../component/Page'
 import Banner2 from '../../component/Header/Banner2'
-import MenuCard from '../../component/Menu/MenuCard'
 // import { menuData } from '../../mockdata'
 import FormHeader from '../../component/FormHeader'
 import FooterComponent from '../../component/Footer'
@@ -12,6 +11,9 @@ import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import CompanyMenuCard from '../../component/Menu/CompanyMenuCard'
 import useCompany from '../../hook/useCompany'
+import PopupAdvertise from '../../component/Popup'
+import StickyNavHeader from '../../component/Header/StickyHeader'
+import MenuCard from '../../component/Card'
 
 // Banner
 // Category
@@ -21,19 +23,45 @@ import useCompany from '../../hook/useCompany'
 // http://localhost:3000/menu/company/?menuId=6441426f234f361402ad2e7d&&companyId=643e44130a4d8d09d656d216
 function CompanyMenu() {
   const [isGridView, setIsGridView] = useState(false)
-  const { getCompanyMenuOnly, loading, menuData, profile } = useMenu();
+  const [open, setOpen] = useState(false)
+  const { getCompanyMenuOnly, loading, profile, menuData } = useMenu();
   const { search } = useLocation();
-  const id = new URLSearchParams(search).get("menuId");
-  const companyId = new URLSearchParams(search).get("companyId");
-  // 6441426f234f361402ad2e7d
-  useEffect( () => {
-     getCompanyMenuOnly({
-      menuId: id,
-      companyId: companyId
+  const menuSlug = new URLSearchParams(search).get("menuId");
+  const companySlug = new URLSearchParams(search).get("companyId");
+
+  // .stickyHeader{
+  //   position: fixed;
+  //   top:0;
+  //   left:0;
+  //   width: 100%;
+  //   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  // }
+
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   console.log(position)
+  //   // setScrollPosition(position);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
+  useEffect(() => {
+    getCompanyMenuOnly({
+      menuId: menuSlug,
+      companyId: companySlug
     })
   }, [])
-  console.log(menuData)
-  console.log(profile)
+
+  useEffect(() => {
+    // setInterval(() => {
+    setOpen(true)
+    // }, 5000)
+  }, [])
+  console.log('sdfsdf', menuData)
   return (<>
     <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
       <Container maxWidth="lg">
@@ -42,7 +70,8 @@ function CompanyMenu() {
             {
               profile !== null ?
                 // <ImageComponent key={index} post={item} />
-                <Banner2 profile={profile} />
+                // <Banner2 profile={profile} />
+                <StickyNavHeader profile={profile} />
                 : ''
             }
           </Grid>
@@ -62,7 +91,9 @@ function CompanyMenu() {
                 <React.Fragment key={index}>
                   <Stack mb={2}>
                     <Typography variant="h5">{item.name}</Typography>
+                    <Divider sx={{ borderStyle: 'groove' }} />
                   </Stack>
+
                   <Box
                     mb={5}
                     sx={{
@@ -72,12 +103,12 @@ function CompanyMenu() {
                         xs: 'repeat(2, 1fr)',
                         sm: 'repeat(4, 1fr)',
                         md: 'repeat(5, 1fr)',
-                        lg: 'repeat(6, 1fr)',
+                        lg: 'repeat(2, 1fr)',
                       },
                     }}
                   >
                     {item?.menuGroupItems?.map((menuItem, i) =>
-                      <CompanyMenuCard key={i} menuItemGroup={{ menuItemGroupId: item.menuItemGroupId }} menuItem={menuItem} />
+                      <MenuCard key={i} menuItemGroup={{ menuItemGroupId: item.menuItemGroupId }} menuItem={menuItem} />
                     )}
                   </Box>
                 </React.Fragment>
@@ -108,19 +139,6 @@ function CompanyMenu() {
                   </React.Fragment>
                   : '. . .'
               )}
-              {/* {
-                !isGridView && menuData.length > 0 ? <>
-                  <Typography sx={{ mb: 2, textAlign: "center" }} variant="h5" component="div">
-                    Menu are listed below
-                  </Typography>
-                  {
-                    menuData.map(((item, index) =>
-                      <>
-                        <MenuListView key={index} menu={item} /></>
-                    ))
-                  }
-                </> : ''
-              } */}
             </Box>
           </Grid>
 
@@ -129,6 +147,7 @@ function CompanyMenu() {
           </Grid>
         </Grid>
       </Container>
+      <PopupAdvertise url='https://www.youtube.com/embed/xPPLbEFbCAo' open={open} onClose={() => setOpen(false)} />
     </Page>
   </>
   )

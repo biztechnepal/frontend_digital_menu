@@ -1,19 +1,20 @@
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Card, Link, Typography, Stack, Grow } from '@mui/material';
+import { Box, Card, Link, Typography, Stack, Grow, CardContent, CardMedia, IconButton, Divider, CardHeader } from '@mui/material';
 import Label from '../Label';
 import Image from '../Image';
 import { PATH_DASHBOARD } from '../../routes/path';
 import { ENDPOINTS } from '../../utlis/endpoints';
+import { BsCart4, BsGrid, BsList } from 'react-icons/bs'
 
 
-CompanyMenuCard.propTypes = {
+MenuCard.propTypes = {
   menuItemGroup: PropTypes.object,
   menuItem: PropTypes.object,
 };
 
-export default function CompanyMenuCard({ menuItem }) {
-  const { menuItemName, price, description, status, menuItemId,imagePath } = menuItem;
+export default function MenuCard({ menuItem }) {
+  const { menuItemName, price, description, status, menuItemId, imagePath } = menuItem;
   const linkTo = PATH_DASHBOARD.root;
   const imagearr = [
     "/assets/burgerbg.jpg",
@@ -27,6 +28,7 @@ export default function CompanyMenuCard({ menuItem }) {
   //   setImage(URL.createObjectURL(image));
   // },[])
 
+  console.log('MENUUUU',menuItem)
   function generateRandom(maxLimit = imagearr.length) {
     let rand = Math.random() * maxLimit;
     rand = Math.floor(rand); // 99
@@ -38,7 +40,33 @@ export default function CompanyMenuCard({ menuItem }) {
       style={{ transformOrigin: '0 0 0' }}
       timeout={500}
     >
-      <Card sx={{ borderRadius: '2.5%', boxShadow: '0 0 2px 0 rgba(145, 158, 171, 0.2),0 22px 24px -4px rgba(145, 158, 171, 0.12)' }}>
+      <Box sx={{ display: 'flex' }} >
+        <CardMedia
+          component="img"
+          sx={{ width: 200, height: 200, objectFit: 'contain',
+          // backgroundColor:'gray',
+          boxShadow:'0 0 1px 0 rgba(145, 158, 172, 0.2), 0 18px 25px -10px rgba(145, 158, 171, 0.12)', borderRadius: '5%' }}
+          image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${menuItemId}`}
+          // image={imagePath}
+          alt="image failed to load"
+        />
+        <Box>
+          <CardContent sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography fontSize={20} variant="h5">
+              {menuItemName}
+            </Typography>
+            <Typography variant="subtitle1" color="text.secondary" component="div">
+              Rs. {price}
+            </Typography>
+          </CardContent>
+          <Divider sx={{ ml: 2, borderStyle: 'dashed' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', m: 2 }}>
+            <Typography variant="caption" >{description}</Typography>
+          </Box>
+        </Box>
+
+      </Box>
+      {/* <Card sx={{ borderRadius: '2.5%', boxShadow: '0 0 2px 0 rgba(145, 158, 171, 0.2),0 22px 24px -4px rgba(145, 158, 171, 0.12)' }}>
         <Box sx={{ position: 'relative' }}>
           {status && (
             <Label
@@ -56,7 +84,6 @@ export default function CompanyMenuCard({ menuItem }) {
             </Label>
           )}
           <Image alt={menuItemName} src={`${imagePath}`} ratio="1/1" />
-          {/* <Image alt={menuItemName} src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.MENUITEMDOWNLOADIMAGE}/${menuItemId}`} ratio="1/1" /> */}
         </Box>
 
         <Stack spacing={1} sx={{ p: 2 }}>
@@ -69,7 +96,7 @@ export default function CompanyMenuCard({ menuItem }) {
             </Stack>
           </Stack>
         </Stack>
-      </Card>
+      </Card> */}
     </Grow>
   );
 }

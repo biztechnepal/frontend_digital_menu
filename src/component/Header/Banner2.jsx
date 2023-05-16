@@ -3,10 +3,13 @@ import { Box, Avatar, SpeedDial, Typography, SpeedDialAction, Stack, Card, Butto
 import Image from '../../component/Image';
 import useResponsive from '../../hook/useResponsive';
 import { ENDPOINTS } from '../../utlis/endpoints';
+import useScroll from '../../hook/useScroll';
+import StickyNavHeader from './StickyHeader';
 
 export default function Banner2({
     profile
 }) {
+    const scrolled = useScroll()
     const {
         companyLogoPath,
         name,
@@ -50,7 +53,6 @@ export default function Banner2({
         },
     }));
 
-    console.log(profile)
     const isDesktop = useResponsive('up', 'sm');
     const RootStyle = styled(Card)(({ theme }) => ({
         boxShadow: 'none',
@@ -67,13 +69,12 @@ export default function Banner2({
     return (
         <>
             <Box sx={{
-                backgroundRepeat:'no-repeat',
+                backgroundRepeat: 'no-repeat',
                 backgroundImage: `url("${cover}")`,
-                backgroundPosition:'top',
-                backgroundPositionY: '52%',
+                backgroundPosition: 'top',
                 backgroundSize: 'cover',
-                borderBottomLeftRadius:'10px',
-                borderBottomRightRadius:'10px',
+                borderBottomLeftRadius: '10px',
+                borderBottomRightRadius: '10px',
                 boxShadow: '0 0 2px 0 rgba(145, 158, 171, 0.2),0 22px 24px -4px rgba(145, 158, 171, 0.12)'
             }}>
                 <Box
@@ -93,15 +94,14 @@ export default function Banner2({
                             src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADCOMPANYLOGO}/${id}`}
                         />
                     </Box>
-                    <Box sx={{ justifyContent: "center", textAlign: "center", borderRadius: '5px', backgroundColor: "#534f4fd6", pl: 15, pr: 15, mb: 2 }}>
-                        <Typography variant="h6" sx={{ color: 'white' }}>{name}</Typography>
-                        <Typography variant="body2" sx={{ color: 'white' }}>{mobile}</Typography>
-                        <Typography variant="body2" sx={{ color: 'white' }}>{city}</Typography>
-                        <Typography variant="body2" sx={{ color: 'white' }}>{country}</Typography>
-                    </Box>
+                </Box>
+                <Box sx={{ justifyContent: "center", textAlign: "center", borderRadius: '5px', backgroundColor: "#534f4fd6", pl: 15, pr: 15, mb: 2 }}>
+                    <Typography variant="h6" sx={{ color: 'white' }}>{name}</Typography>
+                    <Typography variant="body2" sx={{ color: 'white' }}>{mobile}</Typography>
+                    <Typography variant="body2" sx={{ color: 'white' }}>{city}</Typography>
+                    <Typography variant="body2" sx={{ color: 'white' }}>{country}</Typography>
                 </Box>
             </Box>
-
         </>
     );
 }

@@ -14,7 +14,8 @@ const useMenu = () => {
   const getCompanyMenuOnly = async ({ menuId, companyId }) => {
     setLoading(true);
     const response = await createApiEndpoint(ENDPOINTS.PUBLICMENU).fetchById(menuId, {
-      companyId: companyId
+      // slug: menuId,
+      companySlug: companyId
     })
     const { status, data } = response;
     if (status === 200) {
