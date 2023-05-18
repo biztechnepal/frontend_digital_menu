@@ -31,7 +31,7 @@ function Home() {
   const [orderBy, setOrderBy] = useState('status');
   const [order, setOrder] = useState('asc');
   const [open, setOpen] = useState(false)
-  const { getCompanyMenuOnly, loading, profile, menuData } = useMenu();
+  const { getCompanyMenuOnly, loading, profile,menuData } = useMenu();
   const { getPopups, data: popup } = usePopups()
   const { getAdvertise, data: ads } = useAdvertise()
   const { search } = useLocation();
@@ -78,6 +78,12 @@ function Home() {
     setMenuName(name)
   }
 
+  const style ={
+    // color:'#F47A00',
+    color:profile?.theme?.color,
+    fontFmaily:''
+  }
+
   return (<>
     <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
       {
@@ -88,18 +94,20 @@ function Home() {
         ads.map((item, i) =><StickyNavHeader  image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item[0]?.id}`}/>
         )}
 
-      <HeaderTitle title='Our Menu' />
+      <HeaderTitle title='Our Menu' style={style} />
 
       <FormHeader onHandleChange={handleFilter} filterName={menuName} />
 
-      <ViewMode isGridView={isGridView} setIsGridView={setIsGridView} />
+      <ViewMode isGridView={isGridView} setIsGridView={setIsGridView} style={style}/>
 
       {isGridView && dataFiltered?.length > 0 && dataFiltered?.map((menuItem, index) =>
         <React.Fragment>
           <MenuGridCard
             isGridView={isGridView}
             key={index}
-            menuItem={menuItem} />
+            menuItem={menuItem}
+            style={style}
+            />
         </React.Fragment>)
       }
       {
@@ -108,7 +116,10 @@ function Home() {
             <MenuListView
               isGridView={false}
               key={index}
-              menuItem={menuItem} />
+              menuItem={menuItem}
+            style={style}
+              
+              />
           </React.Fragment>
         )
       }

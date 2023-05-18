@@ -309,12 +309,13 @@ a {
   left: 50%;
   width: 60%;
   transform: translateX(-50%);
-  padding: 20px;
+  padding: 30px;
   transition: top 0.3s ease-out;
   z-index: 1;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% 100%; 
+  /* background-size: 100% 100%;  */
+  background-size:'cover'; 
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }

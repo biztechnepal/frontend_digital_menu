@@ -3,7 +3,7 @@ import React from 'react'
 import { BsCart4, BsGrid, BsList } from 'react-icons/bs'
 
 function ViewMode({
-    
+    style,
     isGridView,
     setIsGridView
 }) {
@@ -15,10 +15,10 @@ function ViewMode({
                     {
                             !isGridView ?
                                 <IconButton onClick={() => setIsGridView(true)} >
-                                    <BsList color='#F47A00' size={22} />
+                                    <BsList color={style?.color} size={22} />
                                 </IconButton>
                                 : <IconButton onClick={() => setIsGridView(!isGridView)}  >
-                                    <BsGrid color='#F47A00' size={22} />
+                                    <BsGrid color={style?.color} size={22} />
                                 </IconButton>
                         }
                         {/* <div className="icons toggleList gridlistIcon">

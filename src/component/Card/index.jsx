@@ -14,7 +14,7 @@ MenuGridCard.propTypes = {
   menuItem: PropTypes.array,
 };
 
-export default function MenuGridCard({ menuItem, isGridView }) {
+export default function MenuGridCard({ menuItem, isGridView,style }) {
   // const { menuItemName, price, description, status, menuItemId, imagePath } = menuItem;
   const { menuGroupItems, id, name } = menuItem;
   const linkTo = PATH_DASHBOARD.root;
@@ -42,7 +42,7 @@ export default function MenuGridCard({ menuItem, isGridView }) {
       timeout={500}
     >
       {isGridView && <section className="categorySection sectionSpace ">
-        <CategoryHeader title={name} />
+        <CategoryHeader title={name}  />
         <div className="MenuList gridview">
           <div className="container">
             <br />
@@ -69,13 +69,13 @@ export default function MenuGridCard({ menuItem, isGridView }) {
                                 {item?.description}
                                 {/* <Typography variant='caption'>{item?.description}</Typography> */}
                               </div>
-                              <div className="pull-right">
+                              {/* <div className="pull-right">
                                 <span className="badge badge-success">TEA</span>
-                              </div>
+                              </div> */}
                             </div>
                             <hr />
                             <div className="space-between">
-                              <div className="food-card_price">
+                              <div className="food-card_price" style={style}>
                                 <span>Rs. {item?.price}</span>
                               </div>
                             </div>

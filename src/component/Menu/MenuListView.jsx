@@ -32,7 +32,7 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export default function MenuListView({ menuItem, isGridView }) {
+export default function MenuListView({ menuItem, isGridView ,style}) {
   // const { menuItemName, price, description, status, menuItemId, imagePath } = menuItem;
   const { menuGroupItems, id, name } = menuItem;
   const linkTo = PATH_DASHBOARD.root;
@@ -80,13 +80,13 @@ export default function MenuListView({ menuItem, isGridView }) {
                             <div>
                               <span class="fa fa-fire"></span>{item?.description}
                             </div>
-                            <div class="pull-right">
+                            {/* <div class="pull-right">
                               <span class="badge badge-success">TEA</span>
-                            </div>
+                            </div> */}
                           </div>
 
                           <div class="space-between">
-                            <div class="food-card_price">
+                            <div class="food-card_price" style={style}>
                               <span>Rs. {item?.price}</span>
                             </div>
                           </div>

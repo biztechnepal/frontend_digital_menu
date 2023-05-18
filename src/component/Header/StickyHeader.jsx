@@ -36,11 +36,11 @@ const StickyNavHeader = ({ image }) => {
                 style={{
                     // backgroundImage: `url(${image})`,
                     backgroundColor: '#f1f1f1',
-                    // backgroundImage: `url('/assets/banner.png')`
+                    backgroundImage: `url('/assets/ads.gif')`
                 }}
                 className={`sticky-header ${showHeader ? 'show' : ''}`}
             >
-                <h3>Advertise Banner</h3>
+                {/* <h3>Advertise Banner</h3> */}
             </header>}
         </Box>
     );

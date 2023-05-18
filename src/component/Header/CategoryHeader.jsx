@@ -1,6 +1,7 @@
 import React from 'react'
 
 function CategoryHeader({
+    style,
     title,
     caption="Example Tagline Text"
 }) {
