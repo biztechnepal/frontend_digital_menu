@@ -20,22 +20,15 @@ import MenuCard from '../../component/Card'
 // Search
 // MenuGrid
 // Footer
-// http://localhost:3000/menu/company/?menuId=6441426f234f361402ad2e7d&&companyId=643e44130a4d8d09d656d216
+// http://localhost:3030/menu/?menu=company-name&&company=company-name
+
 function CompanyMenu() {
   const [isGridView, setIsGridView] = useState(false)
   const [open, setOpen] = useState(false)
   const { getCompanyMenuOnly, loading, profile, menuData } = useMenu();
   const { search } = useLocation();
-  const menuSlug = new URLSearchParams(search).get("menuId");
-  const companySlug = new URLSearchParams(search).get("companyId");
-
-  // .stickyHeader{
-  //   position: fixed;
-  //   top:0;
-  //   left:0;
-  //   width: 100%;
-  //   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  // }
+  const menuSlug = new URLSearchParams(search).get("menu");
+  const companySlug = new URLSearchParams(search).get("company");
 
   // const [scrollPosition, setScrollPosition] = useState(0);
   // const handleScroll = () => {
@@ -49,6 +42,8 @@ function CompanyMenu() {
   //     window.removeEventListener('scroll', handleScroll);
   //   };
   // }, []);
+
+  console.log(menuSlug , companySlug)
   useEffect(() => {
     getCompanyMenuOnly({
       menuId: menuSlug,
@@ -61,7 +56,6 @@ function CompanyMenu() {
     setOpen(true)
     // }, 5000)
   }, [])
-  console.log('sdfsdf', menuData)
   return (<>
     <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
       <Container maxWidth="lg">
@@ -100,9 +94,9 @@ function CompanyMenu() {
                       display: 'grid',
                       gap: 3,
                       gridTemplateColumns: {
-                        xs: 'repeat(2, 1fr)',
-                        sm: 'repeat(4, 1fr)',
-                        md: 'repeat(5, 1fr)',
+                        xs: 'repeat(1, 1fr)',
+                        sm: 'repeat(1, 1fr)',
+                        md: 'repeat(2, 1fr)',
                         lg: 'repeat(2, 1fr)',
                       },
                     }}

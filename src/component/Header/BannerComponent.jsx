@@ -4,7 +4,6 @@ import { styled, alpha } from '@mui/material/styles';
 import { Box, Link, Card, Avatar, Typography, CardContent, Stack } from '@mui/material';
 import Image from '../Image';
 import useResponsive from '../../hook/useResponsive';
-import TextMaxLine from '../TextMaxLine'
 
 const OverlayStyle = styled('div')(({ theme }) => ({
     top: 0,

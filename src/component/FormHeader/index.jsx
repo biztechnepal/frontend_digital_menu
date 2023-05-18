@@ -5,49 +5,41 @@ import TextFieldFilter from '../TextFieldFilter';
 import { BsCart4, BsGrid, BsList } from 'react-icons/bs'
 
 function SearchComponent({
+    onHandleChange,
+    filterName,
     isGridView,
     setIsGridView
 }) {
     const [searchValue, setSearchValue] = useState("");
     return (
         <Box p={2}>
-            <form
-            // onSubmit={handleFilter}
-            >
-                <Grid container justifyContent="center" textAlign="center" spacing={2} >
-                    <Grid
-                        item
-                        xs={11}
-                        md={3}
-                        lg={12}
-                        xl={8}
-                    >
-                        <TextFieldFilter
-                            label="Search by menu name. . ."
-                            filter={searchValue}
-                            setfilter={(value) => setSearchValue(value)}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <IconButton >
-                            <BsCart4 size={22} />
-                        </IconButton>
-                    </Grid>
-                    <Grid item>
-                        {
-                            !isGridView ?
-                                <IconButton onClick={() => setIsGridView(true)} >
-                                    <BsList size={22} />
-                                </IconButton>
-                                : <IconButton onClick={() => setIsGridView(!isGridView)}  >
-                                    <BsGrid size={22} />
-                                </IconButton>
-                        }
-                    </Grid>
-                </Grid>
-            </form>
+            <div className="searchBar">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-12 ">
+                            <form className="">
+                                <div className=" row no-gutters align-items-center">
+                                    <div className="col-auto">
+                                        <i className="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <div className="col">
+                                        {/* <input className="form-control " type="search" placeholder="Search topics or keywords" /> */}
+                                        <TextFieldFilter
+                                            filter={filterName}
+                                            onHandleChange={onHandleChange}
+                                        />
+                                    </div>
+                                    {/* <div className="col-auto pl-2">
+                                        <button className="btn  btn-success" type="submit">Search</button>
+                                    </div> */}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </Box>
     )
 }
-
 export default React.memo(SearchComponent)

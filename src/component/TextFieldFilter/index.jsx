@@ -10,39 +10,33 @@ import { BiSearch } from 'react-icons/bi';
 
 export default function TextFieldFilter(props) {
   const {
-    label,
     filter,
-    setfilter
+    onHandleChange
   } = props;
 
   return (
-
     <TextField
       variant='outlined'
-      size="small"
       fullWidth
-      // label={label}
-      // value={filter}
-      onChange={(e) => setfilter(e.target.value)}
+      value={filter}
+      onChange={(event) => onHandleChange(event.target.value)}
+      placeholder="Search by name..."
       InputProps={{
         endAdornment:
-          filter ?
-          (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => {
-                  setfilter("")
-                }}
-                edge="end"
-              >
-                <RiCloseFill size={22} />
+        filter ?
+            (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => onHandleChange()}
+                  edge="end"
+                >
+                  <RiCloseFill size={22} />
 
-              </IconButton>
-            </InputAdornment>
-          ):<InputAdornment position="end"><BiSearch size={22} /></InputAdornment>
+                </IconButton>
+              </InputAdornment>
+            ) : <InputAdornment position="end"><BiSearch size={22} /></InputAdornment>
       }}
-      {...props}
     />
   )
 }

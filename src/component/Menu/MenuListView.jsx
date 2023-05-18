@@ -16,6 +16,9 @@ import Typography from '@mui/material/Typography';
 import { BiFolderMinus, BiTrash } from 'react-icons/bi';
 import Image from '../Image';
 import { Card, Container, Grow } from '@mui/material';
+import CategoryHeader from '../Header/CategoryHeader';
+import { PATH_DASHBOARD } from '../../routes/path';
+import { ENDPOINTS } from '../../utlis/endpoints';
 
 function generate(element) {
   return [0, 1, 2].map((value) =>
@@ -29,9 +32,15 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export default function MenuListView({ menu }) {
-  const { menuItemName, image, price, status, description } = menu;
-  console.log(menu)
+export default function MenuListView({ menuItem, isGridView }) {
+  // const { menuItemName, price, description, status, menuItemId, imagePath } = menuItem;
+  const { menuGroupItems, id, name } = menuItem;
+  const linkTo = PATH_DASHBOARD.root;
+  const imagearr = [
+    "/assets/burgerbg.jpg",
+    "/assets/burgerbg1.png",
+    "/assets/pizza.jpg",
+  ]
 
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
@@ -50,32 +59,49 @@ export default function MenuListView({ menu }) {
       style={{ transformOrigin: '0 0 0' }}
       timeout={500}
     >
-      <Box sx={{ flexGrow: 1 }}>
-        <List dense={dense}>
-          <Grid container >
-            <ListItem
-              secondaryAction={
-                <Typography variant='caption' sx={fontStyle}>Rs. {price}/-</Typography>
-              }
-            >
-              <Typography variant='h6' sx={fontStyle} noWrap>{menuItemName}</Typography>
-              {/* <ListItemAvatar>
-                    <Avatar sx={{ borderRadius: "10%", width: 50, height: 50 }}>
-                      <Image alt={name} src={image} ratio="3/4" />
-                    </Avatar>
-                  </ListItemAvatar> */}
-              {/* <ListItemText
-                    primary={name}
-                    secondary={null}
-                  /> */}
-            </ListItem>
-            <ListItem>
-              <Typography variant='caption' sx={descriptionStyle} >{description}</Typography>
-            </ListItem>
+     <body className='list'>
+     <section className="categorySection sectionSpace ">
+        <CategoryHeader title={name} />
 
-          </Grid>
-        </List>
-      </Box>
+        <div class="MenuList listView ">
+          <div class="list-wrapper container">
+            <br />
+            <div class="row">
+              {
+                menuGroupItems?.length > 0 && menuGroupItems?.map((item, index) =>
+                  <React.Fragment key={index}>
+                    <div class="col-lg-6 col-sm-12">
+                      <div class="food-card_content">
+                        <div class="food-card_title-section">
+                          <a href="#!" class="food-card_title">{item?.menuItemName}</a>
+                        </div>
+                        <div class="food-card_bottom-section">
+                          <div class="space-between">
+                            <div>
+                              <span class="fa fa-fire"></span>{item?.description}
+                            </div>
+                            <div class="pull-right">
+                              <span class="badge badge-success">TEA</span>
+                            </div>
+                          </div>
+
+                          <div class="space-between">
+                            <div class="food-card_price">
+                              <span>Rs. {item?.price}</span>
+                            </div>
+                          </div>
+                          <hr />
+                        </div>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                )}
+            </div>
+          </div>
+        </div>
+
+      </section>
+     </body>
     </Grow>
   );
 }

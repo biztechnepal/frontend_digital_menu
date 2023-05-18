@@ -26,16 +26,6 @@ export default function Router() {
           <Home />
         </GuestGuard>
       ),
-      // children: [
-      //   {
-      //     path: '/',
-      //     element: (
-      //       <GuestGuard>
-      //         <Home />
-      //       </GuestGuard>
-      //     ),
-      //   }
-      // ]
     },
     {
       path: 'company',
@@ -44,14 +34,16 @@ export default function Router() {
           <CompanyMenu />
         </GuestGuard>
       ),
-      // children: [
-      //   {
-      //     path:':id'
-      //   }
-      // ]
     },
+    // Main Routes
+    {
+      path: '*',
+      element: <ErrorPage />,
+    },
+  
   ]);
 }
 const Home = Loadable(lazy(() => import('../pages/home')));
 const CompanyMenu = Loadable(lazy(() => import('../pages/companymenu')));
+const ErrorPage = Loadable(lazy(() => import('../pages/errorpage')));
 const GuestGuard = Loadable(lazy(() => import('../guards/GuestGuard')));

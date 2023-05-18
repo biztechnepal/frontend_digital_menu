@@ -4,7 +4,9 @@ const BASE_URL = "/menu"
 export const PATH_DASHBOARD = {
   root: ROOT,
   home: {
-    menu: path(ROOT, '/menu')
+    menu: path(ROOT, '/menu'),
+    company: path(ROOT, '/company'),
+    error: path(ROOT, '/error'),
   }
 }
 
