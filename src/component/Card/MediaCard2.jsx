@@ -59,14 +59,14 @@ export default function MediaCard2({ menuItem, isGridView, style }) {
                                                         alt="" />
                                                     <a href="#!"><i className="far fa-heart"></i></a>
                                                 </div>
-                                                <div className="food-card_content">
-                                                    <div className="food-card_title-section">
-                                                        <a href="#!" className="food-card_title">{item?.menuItemName}</a>
+                                                <div className="food-card_content" >
+                                                    <div className="food-card_title-section" >
+                                                        <a href="#!" style={style} className="food-card_title">{item?.menuItemName}</a>
                                                     </div>
                                                     <div className="food-card_bottom-section">
                                                         <div className="space-between">
-                                                            <div className="food-card_price">
-                                                                <span>Rs. {item?.price}</span>
+                                                            <div className="food-card_price" style={{ ...style, fontWeight: 800 }}>
+                                                                <span >Rs. {item?.price}</span>
                                                             </div>
 
                                                         </div>

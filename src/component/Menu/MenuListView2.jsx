@@ -70,12 +70,13 @@ export default function MenuListView2({ menuItem, style }) {
                                 {
                                     menuGroupItems?.length > 0 && menuGroupItems?.map((item, index) =>
                                         <React.Fragment key={index}>
-                                            <div className="col-lg-6">
-                                                <ul className="list-group catlistgroup">
-                                                    <li className="list-group-item">
-                                                        <h4 className="list-group-item-heading">{item?.menuItemName}<span
-                                                            className="badge pull-right Commonprice">Rs. {item?.price}</span></h4>
-                                                        <p className="list-group-item-text">{item?.description}</p>
+                                            <div className="col-lg-6" >
+                                                <ul className="list-group catlistgroup"style={{display:'flex',justifyContent:'space-evenly'}}>
+                                                    <li className="list-group-item" >
+                                                        <h4 style={style} className="list-group-item-heading">
+                                                            {item?.menuItemName} 
+                                                            <span className="badge pull-right Commonprice" style={{ ...style, fontWeight: 800 }}>Rs. {item?.price}</span></h4>
+                                                        <p className="list-group-item-text" >{item?.description}</p>
                                                     </li>
                                                 </ul>
                                             </div>
