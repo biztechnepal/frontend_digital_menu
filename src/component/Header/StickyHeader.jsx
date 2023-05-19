@@ -1,9 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-
-
-const StickyNavHeader = ({ image }) => {
+const StickyNavHeader = ({ image,style }) => {
     // const {
     //     companyLogoPath,
     //     name,
@@ -32,16 +30,19 @@ const StickyNavHeader = ({ image }) => {
 
     return (
         <Box >
-            {image !== undefined && <header
-                style={{
-                    backgroundImage: `url(${image})`,
-                    backgroundColor: '#f1f1f1',
-                    // backgroundImage: `url('/assets/ads.gif')`
-                }}
-                className={`sticky-header ${showHeader ? 'show' : ''}`}
-            >
-                {/* <h3>Advertise Banner</h3> */}
-            </header>}
+            {image !== undefined &&
+                <header
+                    style={{
+                        backgroundImage: `url(${image})`,
+                        // backgroundColor: '#f1f1f1',
+                        backgroundColor: style?.color,
+                        // backgroundImage: `url('/assets/ads.gif')`
+                    }}
+                    className={`sticky-header ${showHeader ? 'show' : ''}`}
+                >
+                   {/* <img class="animated-gif" src="https://media.giphy.com/media/Wq6DnHvHchrTG/giphy.gif" /> */}
+                </header>
+            }
         </Box>
     );
 };

@@ -2,9 +2,12 @@ import * as React from 'react';
 import {
     Modal,
     Typography,
-    Box
+    Box,
+    Stack
 } from '@mui/material';
 import ReactPlayer from 'react-player';
+import { RxCross1 } from 'react-icons/rx'
+import { IoClose } from 'react-icons/io5'
 
 export default function PopupAdvertise({
     url,
@@ -17,8 +20,6 @@ export default function PopupAdvertise({
     return (
         <Box
             sx={{
-                // The position fixed scoping doesn't work in IE11.
-                // Disable this demo to preserve the others.
                 '@media all and (-ms-high-contrast: none)': {
                     display: 'none',
                 },
@@ -35,27 +36,34 @@ export default function PopupAdvertise({
                 aria-describedby="server-modal-description"
                 sx={{
                     display: 'flex',
-                    p: 1,
                     alignItems: 'center',
                     justifyContent: 'center',
 
                 }}
                 container={() => rootRef.current}
             >
+
                 <Box sx={{
                     position: 'relative',
                     // bgcolor: 'background.paper',
                     // border: '1px solid #000',
                     // boxShadow: (theme) => theme.shadows[5],
-                    p: 4,
+                    m: 4,
                 }}>
-                    <ReactPlayer
-                        style={{ margin: "0 auto", padding: "5px" }}
-                        light={true}
-                        url={url}
-                        muted={false}
-                        playing
-                        controls={true} />
+                    <Box display='flex'm={2} justifyContent='center'>
+                        <RxCross1  onClick={onClose} cursor='pointer' size={35}  color='#fff' />
+                    </Box>
+                    <Box>
+                        <ReactPlayer
+                            width="100%"
+                            height='auto'
+                            style={{ margin: "0 auto" }}
+                            light={false}
+                            url={url}
+                            muted={false}
+                            playing={true}
+                            controls />
+                    </Box>
                     {/* <iframe width="1280" height="720" src="https://www.youtube.com/embed/xPPLbEFbCAo" title="Restaurant Ad Video Template (Editable)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
                 </Box>
             </Modal>

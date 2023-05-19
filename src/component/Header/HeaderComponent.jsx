@@ -17,7 +17,11 @@ function HeaderComponent({
         // }}
         >
             <div className="container">
-                <div className="row bgColor">
+                <div className="row bgColor" style={{
+                    
+                    // background: `linear - gradient(90deg,${style?.color} 26 %, red 100 %, ${style?.color} 100 %)`
+                    // background: `linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1))`
+                }}>
                     <div className="col-lg-12 d-flex">
                         <div className="logo">
                             <img

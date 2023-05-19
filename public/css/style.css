@@ -308,27 +308,28 @@ a {
   top: -100px;
   left: 50%;
   width: 60%;
+  /* display: flex; */
+  /* justify-content: center; */
   transform: translateX(-50%);
   padding: 30px;
   transition: top 0.3s ease-out;
   z-index: 1;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-size: 100% 100%;  */
-  background-size:'cover'; 
+  background-size: 100% 50%;
+  background-size: contain;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
+img.animated-gif{
+  height: auto;
+}
 .sticky-header.show {
   top: 0;
+  height: 80px;
+
   /* Show the header after scrolling */
 }
-
-
-
-
-
 
 /* ......................................... */
 .Commonprice {

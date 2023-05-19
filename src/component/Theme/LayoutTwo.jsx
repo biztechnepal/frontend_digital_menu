@@ -57,9 +57,9 @@ function LayoutOne() {
   }, [])
 
   useEffect(() => {
-    setInterval(() => {
+    // setInterval(() => {
       setOpen(true)
-    }, 200000)
+    // }, 200000)
   }, [])
 
 
@@ -85,7 +85,7 @@ function LayoutOne() {
       }
       {
         ads?.length > 0 &&
-        ads.map((item, i) => <StickyNavHeader image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item.id}`} />
+        ads.map((item, i) => <StickyNavHeader style={style} image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item.id}`} />
         )}
 
       <HeaderTitle title='Our Menu' style={style} />
