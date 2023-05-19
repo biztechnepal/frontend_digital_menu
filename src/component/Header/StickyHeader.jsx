@@ -34,9 +34,9 @@ const StickyNavHeader = ({ image }) => {
         <Box >
             {image !== undefined && <header
                 style={{
-                    // backgroundImage: `url(${image})`,
+                    backgroundImage: `url(${image})`,
                     backgroundColor: '#f1f1f1',
-                    backgroundImage: `url('/assets/ads.gif')`
+                    // backgroundImage: `url('/assets/ads.gif')`
                 }}
                 className={`sticky-header ${showHeader ? 'show' : ''}`}
             >

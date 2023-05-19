@@ -91,7 +91,7 @@ function Home() {
       }
       {
         ads?.length > 0 &&
-        ads.map((item, i) => <StickyNavHeader image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item[0]?.id}`} />
+        ads.map((item, i) => <StickyNavHeader image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item.id}`} />
         )}
 
       <HeaderTitle title='Our Menu' style={style} />
@@ -127,7 +127,7 @@ function Home() {
       <FooterComponent />
       {
         open && popup?.length > 0 &&
-        popup.map((item, i) => <PopupAdvertise key={i} url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADPOPUPSFILE}/${item[3]?.id}`} open={open} onClose={() => setOpen(false)} />)
+        popup.map((item, i) => <PopupAdvertise key={i} url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADPOPUPSFILE}/${item.id}`} open={open} onClose={() => setOpen(false)} />)
       }
     </Page>
 
