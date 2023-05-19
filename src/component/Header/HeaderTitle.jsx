@@ -6,11 +6,11 @@ function HeaderTitle({
 }) {
     return (
         <div className="menuTitle">
-            <div className="row">
+            {/* <div className="row"> */}
                 <div className="col-lg-12">
                     <h2 style={style}>{title}</h2>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     )
 }
