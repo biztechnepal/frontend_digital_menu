@@ -31,7 +31,7 @@ function Home() {
   const [orderBy, setOrderBy] = useState('status');
   const [order, setOrder] = useState('asc');
   const [open, setOpen] = useState(false)
-  const { getCompanyMenuOnly, loading, profile,menuData } = useMenu();
+  const { getCompanyMenuOnly, loading, profile, menuData } = useMenu();
   const { getPopups, data: popup } = usePopups()
   const { getAdvertise, data: ads } = useAdvertise()
   const { search } = useLocation();
@@ -78,27 +78,27 @@ function Home() {
     setMenuName(name)
   }
 
-  const style ={
+  const style = {
     // color:'#F47A00',
-    color:profile?.theme?.color,
-    fontFmaily:''
+    color: profile?.theme?.color,
+    fontFamily: profile?.theme?.font
   }
 
   return (<>
-    <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+    <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd", fontFamily: profile?.theme?.font }}>
       {
-        profile !== null && <CompanyMainHeader profile={profile} />
+        profile !== null && <CompanyMainHeader profile={profile} style={style} />
       }
       {
         ads?.length > 0 &&
-        ads.map((item, i) =><StickyNavHeader  image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item[0]?.id}`}/>
+        ads.map((item, i) => <StickyNavHeader image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item[0]?.id}`} />
         )}
 
       <HeaderTitle title='Our Menu' style={style} />
 
       <FormHeader onHandleChange={handleFilter} filterName={menuName} />
 
-      <ViewMode isGridView={isGridView} setIsGridView={setIsGridView} style={style}/>
+      <ViewMode isGridView={isGridView} setIsGridView={setIsGridView} style={style} />
 
       {isGridView && dataFiltered?.length > 0 && dataFiltered?.map((menuItem, index) =>
         <React.Fragment>
@@ -107,7 +107,7 @@ function Home() {
             key={index}
             menuItem={menuItem}
             style={style}
-            />
+          />
         </React.Fragment>)
       }
       {
@@ -117,9 +117,9 @@ function Home() {
               isGridView={false}
               key={index}
               menuItem={menuItem}
-            style={style}
-              
-              />
+              style={style}
+
+            />
           </React.Fragment>
         )
       }

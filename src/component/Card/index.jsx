@@ -42,7 +42,7 @@ export default function MenuGridCard({ menuItem, isGridView,style }) {
       timeout={500}
     >
       {isGridView && <section className="categorySection sectionSpace ">
-        <CategoryHeader title={name}  />
+        <CategoryHeader title={name} style={style} />
         <div className="MenuList gridview">
           <div className="container">
             <br />
@@ -60,7 +60,7 @@ export default function MenuGridCard({ menuItem, isGridView,style }) {
                         </div>
                         <div className="food-card_content">
                           <div className="food-card_title-section">
-                            <a href="#!" className="food-card_title">{item?.menuItemName}</a>
+                            <a href="#!"  style={style} className="food-card_title">{item?.menuItemName}</a>
                           </div>
                           <div className="food-card_bottom-section">
                             <div className="space-between">

@@ -2,7 +2,8 @@ import React from 'react'
 import { ENDPOINTS } from '../../utlis/endpoints';
 
 function HeaderComponent({
-    profile
+    profile,
+    style
 }) {
     const {
         address, appSecret, city, companyBannerPath, companyLogoPath, contactPerson, country, email, id, mobile, name, panNo, pinNo, username,
@@ -23,9 +24,9 @@ function HeaderComponent({
                                 src={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADCOMPANYLOGO}/${id}`}
                                 alt="company-logo" />
                         </div>
-                        <div className="companyDetails" style={{ color: '#fff' }}>
-                            <h1>{name}</h1>
-                            <span>{mobile}</span>
+                        <div className="companyDetails" style={{ ...style, color: '#fff' }}>
+                            <h1 style={{ fontFamily: style.fontFmaily }}>{name}</h1>
+                            <span >{mobile}</span>
                             <p>{city} {address}, {country} </p>
                         </div>
                     </div>

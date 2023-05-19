@@ -61,7 +61,7 @@ export default function MenuListView({ menuItem, isGridView ,style}) {
     >
      <body className='list'>
      <section className="categorySection sectionSpace ">
-        <CategoryHeader title={name} />
+        <CategoryHeader title={name} style={style} />
 
         <div class="MenuList listView ">
           <div class="list-wrapper container">
@@ -73,7 +73,7 @@ export default function MenuListView({ menuItem, isGridView ,style}) {
                     <div class="col-lg-6 col-sm-12">
                       <div class="food-card_content">
                         <div class="food-card_title-section">
-                          <a href="#!" class="food-card_title">{item?.menuItemName}</a>
+                          <a href="#!" style={style} class="food-card_title">{item?.menuItemName}</a>
                         </div>
                         <div class="food-card_bottom-section">
                           <div class="space-between">
