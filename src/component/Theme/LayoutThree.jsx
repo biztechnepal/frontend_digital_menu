@@ -90,10 +90,18 @@ function LayoutThree({ menuData, profile }) {
             </React.Fragment>
           ))}
         <FooterComponent />
-        {/* {
-                open && popup?.length > 0 &&
-                popup.map((item, i) => <PopupAdvertise key={i} url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADPOPUPSFILE}/${item.id}`} open={open} onClose={() => setOpen(false)} />)
-            } */}
+        {open &&
+          popup?.length > 0 &&
+          popup.map((item, i) => (
+            <PopupAdvertise
+              key={i}
+              url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${
+                ENDPOINTS.DOWNLOADPOPUPSFILE
+              }/${item.id}`}
+              open={open}
+              onClose={() => setOpen(false)}
+            />
+          ))}
       </Page>
     </>
   );
