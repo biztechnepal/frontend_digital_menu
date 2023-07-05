@@ -1,45 +1,60 @@
-import { Box, Button, Grid, IconButton, ToggleButton } from '@mui/material';
-import React, { useState } from 'react'
+import {
+  Box,
+  IconButton,
+  Grid,
+  InputAdornment,
+  TextField,
+} from '@mui/material';
+import React, { useState } from 'react';
 import TextFieldFilter from '../TextFieldFilter';
-// import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { BsCart4, BsGrid, BsList } from 'react-icons/bs'
+import { RiCloseFill } from 'react-icons/ri';
+import { BiSearch } from 'react-icons/bi';
 
-function SearchComponent({
-    onHandleChange,
-    filterName,
-    isGridView,
-    setIsGridView
-}) {
-    const [searchValue, setSearchValue] = useState("");
-    return (
-        <Box p={2}>
-            <div className="searchBar">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-12 ">
-                            <form className="">
-                                <div className=" row no-gutters align-items-center">
-                                    <div className="col-auto">
-                                        <i className="fas fa-search h4 text-body"></i>
-                                    </div>
-                                    <div className="col">
-                                        {/* <input className="form-control " type="search" placeholder="Search topics or keywords" /> */}
-                                        <TextFieldFilter
-                                            filter={filterName}
-                                            onHandleChange={onHandleChange}
-                                        />
-                                    </div>
-                                    {/* <div className="col-auto pl-2">
-                                        <button className="btn  btn-success" type="submit">Search</button>
-                                    </div> */}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </Box>
-    )
+function SearchComponent({ onChange, filterName, containerStyle }) {
+  return (
+    <Box p={2}>
+      <div
+        className=' row no-gutters align-items-center'
+        style={containerStyle}
+      >
+        <div className='col-auto'>
+          <i className='fas fa-search h4 text-body'></i>
+        </div>
+        <div className='col'>
+          <input
+            value={filterName}
+            onChange={(e) => onChange(e)}
+            className='form-control '
+            type='text'
+            placeholder='Search topics or keywords'
+          />
+          {/* <TextField
+            variant='outlined'
+            fullWidth
+            size='small'
+            defaultValue={filterName || ''}
+            onChange={onChange}
+            placeholder='Search by name...'
+            InputProps={{
+              endAdornment: filterName ? (
+                <InputAdornment position='end'>
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    edge='end'
+                  >
+                    <RiCloseFill size={22} />
+                  </IconButton>
+                </InputAdornment>
+              ) : (
+                <InputAdornment position='end'>
+                  <BiSearch size={22} />
+                </InputAdornment>
+              ),
+            }}
+          /> */}
+        </div>
+      </div>
+    </Box>
+  );
 }
-export default React.memo(SearchComponent)
+export default React.memo(SearchComponent);

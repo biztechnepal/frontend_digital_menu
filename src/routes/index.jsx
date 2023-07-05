@@ -3,12 +3,12 @@ import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 
 const Loadable = (Component) => (props) => {
   const { pathname } = useLocation();
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
-  })
+      setIsLoading(false);
+    }, 1500);
+  });
   return (
     // <Suspense fallback={<LoadingScreen isDashboard={pathname.includes('/menu')} />}>
     <Suspense fallback={isLoading}>
@@ -21,29 +21,27 @@ export default function Router() {
   return useRoutes([
     {
       path: '/',
-      element: (
-        <GuestGuard>
-          <Home />
-        </GuestGuard>
-      ),
+      element: <Home />,
     },
-    {
-      path: 'company',
-      element: (
-        <GuestGuard>
-          <CompanyMenu />
-        </GuestGuard>
-      ),
-    },
+    // {
+    //   path: 'cart',
+    //   element: (
+    //       <Cart />
+    //   ),
+    // },
+    // {
+    //   path: 'cart',
+    //   children: [
+    //     { element: <Cart />, index: true },
+    //     { path: 'detail', element: <CartDetails /> },
+    //   ]
+    // },
     // Main Routes
     {
       path: '*',
       element: <ErrorPage />,
     },
-  
   ]);
 }
 const Home = Loadable(lazy(() => import('../pages/home')));
-const CompanyMenu = Loadable(lazy(() => import('../pages/companymenu')));
 const ErrorPage = Loadable(lazy(() => import('../pages/errorpage')));
-const GuestGuard = Loadable(lazy(() => import('../guards/GuestGuard')));

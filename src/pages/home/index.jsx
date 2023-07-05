@@ -1,61 +1,100 @@
-import React, { useEffect, useState } from 'react'
-import Page from '../../component/Page'
-import { ThemeOne, ThemeTwo } from '../../component/Theme'
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useMenu from '../../hook/useMenu';
+import Page from '../../component/Page';
+import { ThemeOne, ThemeThree, ThemeTwo } from '../../component/Theme';
 import { createApiEndpoint } from '../../services/api';
 import { ENDPOINTS } from '../../utlis/endpoints';
+import { menuData } from '../../mockdata';
 
 function Home() {
   const { search } = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const { getCompanyMenuOnly, loading, menuData } = useMenu();
-  const [profile, setProfile] = useState(null)
-  const [menuData, setMenuData] = useState(null)
-
-  const menuSlug = new URLSearchParams(search).get("menu");
-  const companySlug = new URLSearchParams(search).get("company");
-
+  const [profile, setProfile] = useState(null);
+  const [menuData, setMenuData] = useState(null);
+  const [data, setData] = useState(null);
+  const companySlug = new URLSearchParams(search).get('company');
+  const tableName = new URLSearchParams(search).get('table');
+  // const profile = menuData?.companyDetails;
   useEffect(() => {
-    createApiEndpoint(ENDPOINTS.PUBLICMENU).fetchById(menuSlug, { companySlug: companySlug })
-      .then(response => {
-        const { status, data } = response;
-        if (status === 200) {
-          setMenuData(data.menuGroupItems);
-          setProfile(data.companyDetails);
-        }
-      }).catch(error => {
-        console.log(error)
-      })
-  }, [])
+    createApiEndpoint(ENDPOINTS.PUBLICMENU)
+      .paramsFetch({ companySlug: companySlug })
+      .then((res) => res.data)
+      .then((data) => {
+        setData(data);
+        setMenuData(data.menuGroupItems);
+        setProfile(data.companyDetails);
+      });
+    // .then((response) => {
+    //   const { status, data } = response;
+    //   if (status === 200) {
+    //     setData(data);
+    //     setMenuData(data.menuGroupItems);
+    //     setProfile(data.companyDetails);
+    //   }
+    // })
+  }, []);
 
-  const { themeName } = profile?.theme !== undefined && profile?.theme
-  if (themeName === '1') {
-    return (
-      <>
-        <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+  // const { themeName } = profile?.theme !== undefined && profile?.theme
+  // console.log(themeName)
+  const themeName = '3';
+  switch (themeName) {
+    case '1':
+      return (
+        <>
           <ThemeOne menuData={menuData} profile={profile} />
-        </Page>
-      </>
-    )
-  }
-  else if (themeName === '2') {
-    return (
-      <>
-        <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+        </>
+      );
+    case '2':
+      return (
+        <>
           <ThemeTwo menuData={menuData} profile={profile} />
-        </Page>
-      </>
-    )
+        </>
+      );
+    case '3':
+      return (
+        <>
+          {menuData !== null && (
+            <ThemeThree menuData={menuData} profile={profile} />
+          )}
+        </>
+      );
+    default:
+      return (
+        <>
+          <Page title='Company Menu' sx={{ backgroundColor: '#fdfdfd' }}>
+            loading. . .
+          </Page>
+        </>
+      );
   }
-  else {
-    return (<>
-      <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
-        loading. . .
-      </Page>
-    </>
-    )
-  }
+
+  // if (themeName === '1') {
+  //   return (
+  //     <>
+  //       <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+  //         <ThemeOne menuData={menuData} />
+  //       </Page>
+  //     </>
+  //   )
+  // }
+  // else if (themeName === '2') {
+  //   return (
+  //     <>
+  //       <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+  //         <ThemeTwo menuData={menuData} />
+  //       </Page>
+  //     </>
+  //   )
+  // }
+  // else {
+  //   return (<>
+  //     <Page title="Company Menu" sx={{ backgroundColor: "#fdfdfd" }}>
+  //       loading. . .
+  //     </Page>
+  //   </>
+  //   )
+  // }
 }
 
-export default Home
+export default Home;

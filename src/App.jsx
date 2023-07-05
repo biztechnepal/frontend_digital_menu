@@ -1,15 +1,15 @@
-import { TextField } from '@mui/material'
-import { useState } from 'react'
-import Router from './routes'
+import Router from './routes';
+import { ShoppingCartProvider } from './contexts/ShoppingCartContext';
 import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
-
   return (
-    <HelmetProvider>
+    <ShoppingCartProvider>
+      <HelmetProvider>
         <Router />
-    </HelmetProvider>
-  )
+      </HelmetProvider>
+    </ShoppingCartProvider>
+  );
 }
 
-export default App
+export default App;

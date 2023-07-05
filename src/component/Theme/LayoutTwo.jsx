@@ -7,7 +7,6 @@ import MenuListView from '../../component/Menu/MenuListView'
 import useMenu from '../../hook/useMenu'
 import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import CompanyMenuCard from '../../component/Menu/CompanyMenuCard'
 import useCompany from '../../hook/useCompany'
 // import { menuData } from '../../mockdata'
 
@@ -85,7 +84,11 @@ function LayoutOne() {
       }
       {
         ads?.length > 0 &&
-        ads.map((item, i) => <StickyNavHeader style={style} image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item.id}`} />
+        ads.map((item, i) => <StickyNavHeader 
+        style={style} 
+        // image={`${import.meta.env.VITE_APP_HOST_API_KEY}/${ENDPOINTS.DOWNLOADADSFILE}/${item.id}`} 
+        // image={`assets/adss.gif`} 
+        />
         )}
 
       <HeaderTitle title='Our Menu' style={style} />
@@ -130,7 +133,6 @@ function LayoutOne() {
 }
 
 function applySortFilter({ data, name }) {
-  console.log('TABLE DATA', data)
   const stabilizedThis = data?.map((el, index) => [el, index]);
   // data = stabilizedThis?.map((el) => el[0]);
 

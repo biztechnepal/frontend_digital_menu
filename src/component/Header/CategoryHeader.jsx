@@ -3,11 +3,10 @@ import React from 'react'
 function CategoryHeader({
     style,
     title,
-    caption = "Example Tagline Text"
+    caption = "Caption"
 }) {
     return (
-        <div className="CategoryHeading">
-            <div className="container">
+        <div className="CategoryHeading mb-2">
                 <div className="row">
                     <div className="col-lg-12">
                         <h2 style={style}  >
@@ -17,7 +16,6 @@ function CategoryHeader({
 
                     </div>
                 </div>
-            </div>
         </div>
     )
 }

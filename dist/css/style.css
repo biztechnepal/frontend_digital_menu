@@ -145,7 +145,7 @@ a {
   width: 100%;
   height: 200px;
   -o-object-fit: cover;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .MenuList.gridview .food-card .food-card_img i {
@@ -242,7 +242,7 @@ a {
     width: 200px;
     height: 100%;
     -o-object-fit: cover;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -308,20 +308,104 @@ a {
   top: -100px;
   left: 50%;
   width: 60%;
+  /* display: flex; */
+  /* justify-content: center; */
   transform: translateX(-50%);
   padding: 30px;
   transition: top 0.3s ease-out;
   z-index: 1;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-size: 100% 100%;  */
-  background-size:'cover'; 
+  background-size: 100% 50%;
+  background-size: contain;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
+img.animated-gif{
+  height: auto;
+}
 .sticky-header.show {
   top: 0;
+  height: 80px;
 
   /* Show the header after scrolling */
+}
+
+/* ......................................... */
+.Commonprice {
+  font-size: 20px;
+  font-weight: 500;
+  color: #F47A00;
+}
+
+
+/* --------------------------------- */
+.type2headertext h1 { 
+  background: -webkit-linear-gradient(#83a74a, #631414);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+.bg-container{
+    background-image: url('/assets/bg2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 130px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sticky{
+    display: none;
+    z-index: 9;
+}
+.sticky.fixed{
+    display: block;
+}
+.footersticky {
+    z-index: 99;
+
+}
+.footersticky .footerfixed{
+    display: block;
+}
+
+.stickytopadds {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 100;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footerfixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+@media screen and (max-width:991px) {
+.loggo {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+  }
+}
+
+@media screen and (max-width:991px) {
+.bg-container {
+      background-position: center;
+      padding-top: 55px !important;
+
+  }
 }

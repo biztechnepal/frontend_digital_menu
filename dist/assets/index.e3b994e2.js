@@ -1,1 +1,0 @@
-import{a,F as e,j as r}from"./index.b706b227.js";function o(){return a(e,{children:[r("h2",{children:"Error. . ."}),r("h2",{children:"There are no any associated company to display menu."})]})}export{o as default};

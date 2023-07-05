@@ -13,6 +13,7 @@ export const ENDPOINTS = {
     MENUITEMDOWNLOADIMAGE: `${COMPANY_API_ROUTE_NAME}/DownloadImages/DownloadItemImage`,
     DOWNLOADADSFILE: `${COMPANY_API_ROUTE_NAME}/DownloadImages/DownloadAdFile`,
     DOWNLOADPOPUPSFILE: `${COMPANY_API_ROUTE_NAME}/DownloadImages/DownloadPopupFile`,
+    ORDERS: `${COMPANY_API_ROUTE_NAME}/Orders`,
 
     COMPANYPROFILE: `${COMPANY_API_ROUTE_NAME}/Companies/CompanyProfile`,
     POPUPS: `${ADMIN}/Popups`,

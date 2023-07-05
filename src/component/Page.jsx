@@ -5,14 +5,18 @@ import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const Page = forwardRef(({ children, title = '', meta, ...other }, ref) => (
+const Page = forwardRef(({ children, style, title = '', meta, ...other }, ref) => (
   <>
     <Helmet>
       <title>{`${title}`}</title>
       {meta}
     </Helmet>
     <Box ref={ref} {...other}>
-      {children}
+      <div className='bg-container' style={style}>
+        <div className='container'>
+          {children}
+        </div>
+      </div>
     </Box>
   </>
 ));

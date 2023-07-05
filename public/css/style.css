@@ -337,3 +337,75 @@ img.animated-gif{
   font-weight: 500;
   color: #F47A00;
 }
+
+
+/* --------------------------------- */
+.type2headertext h1 { 
+  background: -webkit-linear-gradient(#83a74a, #631414);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+.bg-container{
+    background-image: url('/assets/bg2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 130px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sticky{
+    display: none;
+    z-index: 9;
+}
+.sticky.fixed{
+    display: block;
+}
+.footersticky {
+    z-index: 99;
+
+}
+.footersticky .footerfixed{
+    display: block;
+}
+
+.stickytopadds {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 100;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footerfixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+@media screen and (max-width:991px) {
+.loggo {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+  }
+}
+
+@media screen and (max-width:991px) {
+.bg-container {
+      background-position: center;
+      padding-top: 55px !important;
+
+  }
+}

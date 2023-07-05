@@ -20,6 +20,10 @@ export const createApiEndpoint = (endpoints) => {
       `${url}/${id}`,
       updatedRecord
     ),
+    create: values => axiosInstance.post(
+      url,
+      values
+    ),
     delete: id => axiosInstance.delete(
       `${url}/${id}`
     ),

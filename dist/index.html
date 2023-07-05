@@ -9,8 +9,11 @@
   <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Libre%20Baskerville' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Roboto%20Slab' rel='stylesheet'>
-  
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/style.css">
@@ -19,14 +22,31 @@
   <meta name="description" content="digital_menu" />
   <meta name="keywords" content="digital_menu" />
   <meta name="author" content="Digital Menu" />
-  <script type="module" crossorigin src="/assets/index.b706b227.js"></script>
+  <script type="module" crossorigin src="/assets/index.9c3e384f.js"></script>
   <link rel="stylesheet" href="/assets/index.458f9883.css">
 </head>
 
-<body >
+<body>
   <div id="root"></div>
 </body>
 
 
+<script>
+
+  $(window).scroll(function () {
+    var sticky = $('.sticky'),
+      scroll = $(window).scrollTop();
+    if (scroll >= 100) sticky.addClass('fixed');
+    else sticky.removeClass('fixed');
+  });
+
+  $(window).scroll(function () {
+    var sticky = $('.footersticky'),
+      scroll = $(window).scrollTop();
+
+    if (scroll >= 100) sticky.addClass('footerfixed');
+    else sticky.removeClass('footerfixed');
+  });
+</script>
 
 </html>
