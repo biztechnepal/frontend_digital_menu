@@ -44,20 +44,20 @@ export default function PopupAdvertise({ url, open, onClose, ...other }) {
             <RxCross1
               onClick={onClose}
               cursor='pointer'
-              size={35}
+              size={20}
               color='#fff'
             />
           </Box>
           <Box>
             <ReactPlayer
-              width='100%'
+              width={'70%'}
               height='auto'
               style={{ margin: '0 auto' }}
               light={false}
               url={url}
-              muted={false}
+              muted
               playing={false}
-              controls
+              controls={false}
             />
           </Box>
           {/* <iframe width="1280" height="720" src="https://www.youtube.com/embed/xPPLbEFbCAo" title="Restaurant Ad Video Template (Editable)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
