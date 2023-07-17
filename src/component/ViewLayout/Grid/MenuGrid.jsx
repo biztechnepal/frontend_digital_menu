@@ -5,7 +5,7 @@ import { ENDPOINTS } from '../../../utlis/endpoints';
 import { useShoppingCart } from '../../../contexts/ShoppingCartContext';
 import { MdAddShoppingCart } from 'react-icons/md';
 
-function MenuGrid({ item, style, addToCart, hasPOS, companyId }) {
+function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
   const itemImage = `${import.meta.env.VITE_APP_HOST_API_KEY}/${
     ENDPOINTS.MENUITEMDOWNLOADIMAGE
   }/${item?.menuItemId}`;
@@ -42,15 +42,23 @@ function MenuGrid({ item, style, addToCart, hasPOS, companyId }) {
 
             <div className='food-card_bottom-section'>
               <div className='space-between mt-3'>
-                <div className='food-card_price' style={style}>
+                <div
+                  className='food-card_price'
+                  style={{ ...style, fontSize: `${theme.size.caption}px` }}
+                >
                   <span>Rs. {item?.price}</span>
                 </div>
               </div>
-              <p className='list-group-item-text'>{item?.description}</p>
+              <p
+                className='list-group-item-text'
+                style={{ ...style, fontSize: `${theme.size.description}px` }}
+              >
+                {item?.description}
+              </p>
               <hr />
 
               {hasPOS && (
-                <div className='input-group w-50 mb-3'>
+                <div className='input-group w-60 mb-3'>
                   {quantity === 0 ? (
                     <button
                       className='btn btn-outline-info add-btn'
@@ -59,7 +67,8 @@ function MenuGrid({ item, style, addToCart, hasPOS, companyId }) {
                       // onClick={addToCart}
                       onClick={() => increaseCartQuantity(item, item.id)}
                     >
-                      <MdAddShoppingCart size={25} />
+                      <AiOutlinePlus size={18} />
+                      Add To Cart
                     </button>
                   ) : (
                     <React.Fragment>
@@ -75,7 +84,7 @@ function MenuGrid({ item, style, addToCart, hasPOS, companyId }) {
                       </div>
                       <input
                         type='text'
-                        className='form-control input-manulator'
+                        className='form-control input-manulator text-center'
                         value={quantity}
                         aria-label='Example text with button addon'
                         aria-describedby='button-addon1'

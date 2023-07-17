@@ -5,7 +5,7 @@ import { MenuGridView, MenuListView } from './ViewLayout';
 import useAddToCart from '../hook/useAddToCart';
 import CartDrawer from './Popup/CartDrawer';
 
-function AllView({ companyId, hasPOS, isGridView, menuItem, style }) {
+function AllView({ theme, companyId, hasPOS, isGridView, menuItem, style }) {
   const { menuGroupItems, id, name } = menuItem;
   const { products, addToCart } = useAddToCart();
   const [open, setOpen] = useState(false);
@@ -29,12 +29,9 @@ function AllView({ companyId, hasPOS, isGridView, menuItem, style }) {
                   menuGroupItems?.map((item, index) => (
                     <React.Fragment key={index}>
                       <MenuGridView
+                        theme={theme}
                         companyId={companyId}
                         hasPOS={hasPOS}
-                        // addToCart={() => {
-                        //   setOpen(true);
-                        //   addToCart(menuCartItem(item));
-                        // }}
                         item={item}
                         style={style}
                       />
@@ -51,12 +48,9 @@ function AllView({ companyId, hasPOS, isGridView, menuItem, style }) {
                       menuGroupItems?.map((item, index) => (
                         <React.Fragment key={index}>
                           <MenuListView
+                            theme={theme}
                             companyId={companyId}
                             hasPOS={hasPOS}
-                            // addToCart={() => {
-                            //   setOpen(true);
-                            //   addToCart(menuCartItem(item));
-                            // }}
                             item={item}
                             style={style}
                           />

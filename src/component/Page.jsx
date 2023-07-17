@@ -5,21 +5,26 @@ import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const Page = forwardRef(({ children, style, title = '', meta, ...other }, ref) => (
-  <>
-    <Helmet>
-      <title>{`${title}`}</title>
-      {meta}
-    </Helmet>
-    <Box ref={ref} {...other}>
-      <div className='bg-container' style={style}>
-        <div className='container'>
-          {children}
+const Page = forwardRef(
+  ({ children, theme, title = '', meta, ...other }, ref) => (
+    <>
+      <Helmet>
+        <title>{`${title}`}</title>
+        {meta}
+      </Helmet>
+      <Box ref={ref} {...other}>
+        <div
+          className='bg-container'
+          style={{
+            backgroundImage: `url('/assets/bg2.svg')`,
+          }}
+        >
+          <div className='container'>{children}</div>
         </div>
-      </div>
-    </Box>
-  </>
-));
+      </Box>
+    </>
+  )
+);
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,

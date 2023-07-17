@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import CartDrawer from './Popup/CartDrawer';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-function ViewMode({ style, isGridView, setIsGridView }) {
+function ViewMode({ hasPOS, style, isGridView, setIsGridView }) {
   //   const { products, itemCount } = useAddToCart();
   const { openCart, cartTotalItem } = useShoppingCart();
   const [open, setOpen] = useState(false);
@@ -25,10 +25,12 @@ function ViewMode({ style, isGridView, setIsGridView }) {
                 <BsGrid color={style?.color} size={22} />
               </IconButton>
             )}
-            <IconButton onClick={openCart}>
-              <BsCartPlusFill color={style?.color} size={22} />
-              {cartTotalItem}
-            </IconButton>
+            {hasPOS && (
+              <IconButton onClick={openCart}>
+                <BsCartPlusFill color={style?.color} size={22} />
+                {cartTotalItem}
+              </IconButton>
+            )}
           </div>
         </div>
         {/* {open && <CartDrawer open={open} setOpen={setOpen} />} */}

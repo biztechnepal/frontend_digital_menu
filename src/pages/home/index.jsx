@@ -35,9 +35,8 @@ function Home() {
     // })
   }, []);
 
-  // const { themeName } = profile?.theme !== undefined && profile?.theme
-  // console.log(themeName)
-  const themeName = '3';
+  const themeName = profile?.theme !== undefined && profile?.theme?.name;
+  // const themeName = '1';
   switch (themeName) {
     case '1':
       return (
@@ -48,7 +47,7 @@ function Home() {
     case '2':
       return (
         <>
-          <ThemeTwo menuData={menuData} profile={profile} />
+          <ThemeThree menuData={menuData} profile={profile} />
         </>
       );
     case '3':

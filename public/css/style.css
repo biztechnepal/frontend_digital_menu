@@ -347,7 +347,6 @@ img.animated-gif{
   font-weight: bold;
 }
 .bg-container{
-    background-image: url('/assets/bg2.svg');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 130px;

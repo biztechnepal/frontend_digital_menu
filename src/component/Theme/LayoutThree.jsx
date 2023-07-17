@@ -25,7 +25,6 @@ function LayoutThree({ menuData, profile }) {
   const [open, setOpen] = useState(false);
   const { getPopups, data: popup } = usePopups();
   const { getAdvertise, data: ads } = useAdvertise();
-  const { search } = useLocation();
   const { theme } = profile !== undefined && profile;
   const hasPOS = profile.hasPOS;
   useEffect(() => {
@@ -48,16 +47,29 @@ function LayoutThree({ menuData, profile }) {
     // color:'#F47A00',
     color: theme?.color,
     fontFamily: theme?.font,
-    fontSize: `${theme?.size?.title}`,
+    fontSize: `${theme?.size?.title}px`,
   };
-
+  console.log(ads);
   return (
     <>
       <Page
-        title='Company Menu'
-        sx={{ backgroundColor: '#fdfdfd', fontFamily: theme?.font }}
+        title={profile.name}
+        theme={theme}
+        sx={{
+          backgroundColor: '#fdfdfd',
+          fontFamily: theme?.font,
+        }}
       >
-        <AdvertisementHeader position='top' />
+        {ads?.length > 0 &&
+          ads.map((item, i) => (
+            <AdvertisementHeader
+              url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${
+                ENDPOINTS.DOWNLOADADSFILE
+              }/${item.id}`}
+              position={'top'}
+            />
+          ))}
+
         {profile !== null && <NoBgHeader profile={profile} style={style} />}
         <HeaderTitle title='Our Menu' style={style} />
 
@@ -72,6 +84,7 @@ function LayoutThree({ menuData, profile }) {
           }}
         />
         <ViewMode
+          hasPOS={hasPOS}
           isGridView={isGridView}
           setIsGridView={setIsGridView}
           style={style}
@@ -80,6 +93,7 @@ function LayoutThree({ menuData, profile }) {
           dataFiltered?.map((menuItem, index) => (
             <React.Fragment key={index}>
               <AllView
+                theme={theme}
                 companyId={profile?.id}
                 hasPOS={hasPOS}
                 isGridView={isGridView}
@@ -89,7 +103,7 @@ function LayoutThree({ menuData, profile }) {
               />
             </React.Fragment>
           ))}
-        <FooterComponent />
+        <FooterComponent profile={profile} />
         {open &&
           popup?.length > 0 &&
           popup.map((item, i) => (

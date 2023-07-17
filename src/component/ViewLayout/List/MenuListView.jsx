@@ -4,7 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useShoppingCart } from '../../../contexts/ShoppingCartContext';
 import { MdAddShoppingCart } from 'react-icons/md';
 
-function MenuListView({ index, item, style, addToCart, hasPOS }) {
+function MenuListView({ theme, index, item, style, addToCart, hasPOS }) {
   const {
     getItemQuantity,
     cartItems,
@@ -28,11 +28,19 @@ function MenuListView({ index, item, style, addToCart, hasPOS }) {
 
           <div className='food-card_bottom-section'>
             <div className='space-between mt-3'>
-              <div className='food-card_price' style={style}>
+              <div
+                className='food-card_price'
+                style={{ ...style, fontSize: `${theme.size.caption}px` }}
+              >
                 <span>Rs. {item?.price}</span>
               </div>
             </div>
-            <p className='list-group-item-text'>{item?.description}</p>
+            <p
+              className='list-group-item-text'
+              style={{ ...style, fontSize: `${theme.size.description}px` }}
+            >
+              {item?.description}
+            </p>
             <hr />
 
             {hasPOS && (
@@ -45,7 +53,8 @@ function MenuListView({ index, item, style, addToCart, hasPOS }) {
                     // onClick={addToCart}
                     onClick={() => increaseCartQuantity(item, item.id)}
                   >
-                    <MdAddShoppingCart size={25} />
+                    <AiOutlinePlus size={18} />
+                    Add To Cart
                   </button>
                 ) : (
                   <React.Fragment>

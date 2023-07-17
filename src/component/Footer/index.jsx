@@ -2,13 +2,13 @@ import { Box } from '@mui/material';
 import React from 'react';
 import AdvertisementHeader from '../Sticky/AdvertisementHeader';
 
-function FooterComponent() {
+function FooterComponent({ profile }) {
   return (
     // <Box m={5} justifyContent="center" textAlign="center">
     //     <span>Digital Menu: ©</span>
     // </Box>
     <footer>
-      {/* <AdvertisementHeader position='to' /> */}
+      <AdvertisementHeader position={profile?.theme.advertisementPlacement} />
       <div className='row'>
         <div
           className='col-lg-12'
