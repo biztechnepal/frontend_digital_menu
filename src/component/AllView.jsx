@@ -21,7 +21,10 @@ function AllView({ theme, companyId, hasPOS, isGridView, menuItem, style }) {
     <div className='container'>
       <div className='bgWrapper'>
         <section className='categorySection sectionSpace'>
-          <CategoryHeader title={name} style={style} />
+          <CategoryHeader
+            title={name}
+            style={{ ...style, fontSize: `${theme.size.header}` }}
+          />
           {isGridView ? (
             <div className='MenuList gridview'>
               <div className='row'>

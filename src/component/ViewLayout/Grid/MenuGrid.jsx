@@ -44,14 +44,14 @@ function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
               <div className='space-between mt-3'>
                 <div
                   className='food-card_price'
-                  style={{ ...style, fontSize: `${theme.size.caption}px` }}
+                  style={{ ...style, fontSize: `${theme.size.caption}` }}
                 >
                   <span>Rs. {item?.price}</span>
                 </div>
               </div>
               <p
                 className='list-group-item-text'
-                style={{ ...style, fontSize: `${theme.size.description}px` }}
+                style={{ ...style, fontSize: `${theme.size.description}` }}
               >
                 {item?.description}
               </p>

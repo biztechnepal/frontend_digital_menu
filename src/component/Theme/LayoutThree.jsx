@@ -47,9 +47,8 @@ function LayoutThree({ menuData, profile }) {
     // color:'#F47A00',
     color: theme?.color,
     fontFamily: theme?.font,
-    fontSize: `${theme?.size?.title}px`,
+    fontSize: `${theme?.size?.title}`,
   };
-  console.log(ads);
   return (
     <>
       <Page
@@ -63,15 +62,19 @@ function LayoutThree({ menuData, profile }) {
         {ads?.length > 0 &&
           ads.map((item, i) => (
             <AdvertisementHeader
+              link={item.adUrl}
               url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${
                 ENDPOINTS.DOWNLOADADSFILE
               }/${item.id}`}
-              position={'top'}
+              position={theme?.advertisementPlacement}
             />
           ))}
 
         {profile !== null && <NoBgHeader profile={profile} style={style} />}
-        <HeaderTitle title='Our Menu' style={style} />
+        <HeaderTitle
+          title='Our Menu'
+          style={{ ...style, fontSize: `${theme?.size?.title}` }}
+        />
 
         <FormHeader
           onChange={(e) => setMenuName(e.target.value)}
@@ -103,7 +106,7 @@ function LayoutThree({ menuData, profile }) {
               />
             </React.Fragment>
           ))}
-        <FooterComponent profile={profile} />
+        <FooterComponent ads={ads} profile={profile} />
         {open &&
           popup?.length > 0 &&
           popup.map((item, i) => (

@@ -1,32 +1,20 @@
-import {
-  Box,
-  IconButton,
-  Grid,
-  InputAdornment,
-  TextField,
-} from '@mui/material';
-import React, { useState } from 'react';
-import TextFieldFilter from '../TextFieldFilter';
-import { RiCloseFill } from 'react-icons/ri';
-import { BiSearch } from 'react-icons/bi';
+import { Box } from '@mui/material';
+import React from 'react';
 
 function SearchComponent({ onChange, filterName, containerStyle }) {
   return (
     <Box p={2}>
-      <div
-        className=' row no-gutters align-items-center'
-        style={containerStyle}
-      >
+      <div className='row no-gutters align-items-center' style={containerStyle}>
         <div className='col-auto'>
           <i className='fas fa-search h4 text-body'></i>
         </div>
-        <div className='col'>
+        <div className='col-auto' style={{ width: '100%' }}>
           <input
             value={filterName}
             onChange={(e) => onChange(e)}
             className='form-control '
             type='text'
-            placeholder='Search topics or keywords'
+            placeholder='Search menu by name'
           />
           {/* <TextField
             variant='outlined'

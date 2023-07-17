@@ -1,11 +1,13 @@
 import React from 'react';
 
-function AdvertisementHeader({ url, position }) {
+function AdvertisementHeader({ url, link, position }) {
   const place = position === 'top' ? 'sticky' : 'footersticky';
   return (
     <div className={place}>
       <div className='container'>
-        <img src={url} alt='' />
+        <a href={link} target='__blank'>
+          <img src={url} alt='' />
+        </a>
       </div>
     </div>
   );
