@@ -97,7 +97,7 @@ export function ShoppingCartProvider({ children }) {
       return currItems.filter((item) => item.id !== id);
     });
   }
-  const sendMenuOrder = (companyId) => {
+  const sendMenuOrder = () => {
     // Logic to place the order
     const items = cartItems.map((item) => ({
       orderItemCode: item.code,
@@ -112,8 +112,10 @@ export function ShoppingCartProvider({ children }) {
     placeOrderService(values)
       .then((response) => {
         setCartItems([]);
-        localStorage.clear();
+        localStorage.removeItem('shopping-cart');
+        localStorage.removeItem('products');
         console.log('ORDER', response);
+        // window.location.reload();
       })
       .catch((error) => {
         console.log('ORDER ERROR', error);
