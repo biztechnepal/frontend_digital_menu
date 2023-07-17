@@ -97,14 +97,14 @@ export function ShoppingCartProvider({ children }) {
       return currItems.filter((item) => item.id !== id);
     });
   }
-  const sendMenuOrder = () => {
+  const sendMenuOrder = (companyId) => {
     // Logic to place the order
-    console.log('Order placed:', cartItems);
     const items = cartItems.map((item) => ({
       orderItemCode: item.code,
       quantity: item.quantity,
     }));
     const values = {
+      companyId: localStorage.getItem('companyId'),
       tableName: tableName,
       orderItemList: items,
     };

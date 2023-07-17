@@ -23,6 +23,7 @@ function Home() {
       .then((data) => {
         setData(data);
         setMenuData(data.menuGroupItems);
+        localStorage.setItem('companyId', data.companyDetails.id);
         setProfile(data.companyDetails);
       });
     // .then((response) => {
