@@ -103,11 +103,10 @@ export function ShoppingCartProvider({ children }) {
       quantity: item.quantity,
     }));
     const values = {
-      // companyId: localStorage.getItem('companyId'),
-      // tableName: tableName,
-      // orderItemList: items,
+      companyId: localStorage.getItem('companyId'),
+      tableName: tableName,
+      orderItemList: items,
     };
-    console.log(values);
     placeOrderService(values)
       .then((response) => {
         setCartItems([]);
