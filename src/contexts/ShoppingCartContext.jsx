@@ -98,15 +98,14 @@ export function ShoppingCartProvider({ children }) {
     });
   }
   const sendMenuOrder = () => {
-    // Logic to place the order
     const items = cartItems.map((item) => ({
       orderItemCode: item.code,
       quantity: item.quantity,
     }));
     const values = {
-      companyId: localStorage.getItem('companyId'),
-      tableName: tableName,
-      orderItemList: items,
+      // companyId: localStorage.getItem('companyId'),
+      // tableName: tableName,
+      // orderItemList: items,
     };
     console.log(values);
     placeOrderService(values)
@@ -114,11 +113,14 @@ export function ShoppingCartProvider({ children }) {
         setCartItems([]);
         localStorage.removeItem('shopping-cart');
         localStorage.removeItem('products');
-        console.log('ORDER', response);
         // window.location.reload();
       })
       .catch((error) => {
-        console.log('ORDER ERROR', error);
+        console.log(error.response);
+        const { data } = error.response;
+        Object.keys(data).forEach((key) => {
+          alert(`${data[key][0]}`);
+        });
       });
   };
   return (

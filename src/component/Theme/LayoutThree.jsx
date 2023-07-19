@@ -49,10 +49,15 @@ function LayoutThree({ menuData, profile }) {
     fontFamily: theme?.font,
     fontSize: `${theme?.size?.title}`,
   };
+  const bgImage = `${import.meta.env.VITE_APP_HOST_API_KEY}/${
+    ENDPOINTS.MENUBGIMAGE
+  }/${profile?.id}`;
   return (
     <>
       <Page
+        bgImage={bgImage}
         title={profile.name}
+        companyId={profile?.id}
         theme={theme}
         sx={{
           backgroundColor: '#fdfdfd',

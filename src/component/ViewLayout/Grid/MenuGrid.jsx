@@ -4,6 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { ENDPOINTS } from '../../../utlis/endpoints';
 import { useShoppingCart } from '../../../contexts/ShoppingCartContext';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { Typography } from '@mui/material';
 
 function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
   const itemImage = `${import.meta.env.VITE_APP_HOST_API_KEY}/${
@@ -40,14 +41,12 @@ function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
               </a>
             </div>
 
-            <div className='food-card_bottom-section'>
-              <div className='space-between mt-3'>
-                <div
-                  className='food-card_price'
-                  style={{ ...style, fontSize: `${theme.size.caption}` }}
-                >
-                  <span>Rs. {item?.price}</span>
-                </div>
+            <div className='space-between mt-3'>
+              <div
+                className='food-card_price'
+                style={{ ...style, fontSize: `${theme.size.caption}` }}
+              >
+                <span>Rs. {item?.price}</span>
               </div>
               <p
                 className='list-group-item-text'
@@ -58,7 +57,7 @@ function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
               <hr />
 
               {hasPOS && (
-                <div className='input-group w-60 mb-3'>
+                <div className='food-card_order-count'>
                   {quantity === 0 ? (
                     <button
                       className='btn btn-outline-info add-btn'
@@ -67,37 +66,41 @@ function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
                       // onClick={addToCart}
                       onClick={() => increaseCartQuantity(item, item.id)}
                     >
-                      <AiOutlinePlus size={18} />
-                      Add To Cart
+                      <Typography>
+                        <AiOutlinePlus size={18} />
+                        Add To Cart
+                      </Typography>
                     </button>
                   ) : (
                     <React.Fragment>
-                      <div className='input-group-prepend'>
-                        <button
-                          className='btn btn-outline-secondary minus-btn'
-                          type='button'
-                          id='button-addon1'
-                          onClick={() => decreaseCartQuantity(item, item.id)}
-                        >
-                          <AiOutlineMinus />
-                        </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control input-manulator text-center'
-                        value={quantity}
-                        aria-label='Example text with button addon'
-                        aria-describedby='button-addon1'
-                      />
-                      <div className='input-group-append'>
-                        <button
-                          className='btn btn-outline-secondary add-btn'
-                          type='button'
-                          id='button-addon1'
-                          onClick={() => increaseCartQuantity(item, item.id)}
-                        >
-                          <AiOutlinePlus />
-                        </button>
+                      <div className='input-group w-50 mb-3'>
+                        <div className='input-group-prepend'>
+                          <button
+                            className='btn btn-outline-secondary minus-btn'
+                            type='button'
+                            id='button-addon1'
+                            onClick={() => decreaseCartQuantity(item, item.id)}
+                          >
+                            <AiOutlineMinus />
+                          </button>
+                        </div>
+                        <input
+                          type='text'
+                          className='form-control input-manulator text-center'
+                          value={quantity}
+                          aria-label='Example text with button addon'
+                          aria-describedby='button-addon1'
+                        />
+                        <div className='input-group-append'>
+                          <button
+                            className='btn btn-outline-secondary add-btn'
+                            type='button'
+                            id='button-addon1'
+                            onClick={() => increaseCartQuantity(item, item.id)}
+                          >
+                            <AiOutlinePlus />
+                          </button>
+                        </div>
                       </div>
                     </React.Fragment>
                   )}

@@ -70,7 +70,7 @@ function MenuListView({ theme, index, item, style, addToCart, hasPOS }) {
                     </div>
                     <input
                       type='text'
-                      className='form-control input-manulator'
+                      className='form-control input-manulator text-center'
                       value={quantity}
                       aria-label='Example text with button addon'
                       aria-describedby='button-addon1'

@@ -16,7 +16,7 @@ const Page = forwardRef(
         <div
           className='bg-container'
           style={{
-            backgroundImage: `url('/assets/bg2.svg')`,
+            backgroundImage: `url(${other?.bgImage})`,
           }}
         >
           <div className='container'>{children}</div>

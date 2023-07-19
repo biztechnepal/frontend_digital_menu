@@ -11,9 +11,9 @@ axiosInstance.interceptors.response.use(
     if (response.status === 413) {
       alert('File Size Is Too Large');
     }
-    if (response.status === 400) {
-      window.location.href = '/menu/error';
-    }
+    // if (response.status === 400) {
+    //   window.location.href = '/menu/error';
+    // }
     // return error
     return Promise.reject(error);
   }
