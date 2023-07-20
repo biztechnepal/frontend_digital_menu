@@ -61,7 +61,16 @@ function LayoutOne({ menuData, profile }) {
         title='Company Menu'
         sx={{ backgroundColor: '#fdfdfd', fontFamily: theme?.font }}
       >
-        <AdvertisementHeader position='top' />
+        {ads?.length > 0 &&
+          ads.map((item, i) => (
+            <AdvertisementHeader
+              link={item.adUrl}
+              url={`${import.meta.env.VITE_APP_HOST_API_KEY}/${
+                ENDPOINTS.DOWNLOADADSFILE
+              }/${item.id}`}
+              position={theme?.advertisementPlacement}
+            />
+          ))}
         {profile !== null && (
           <CompanyMainHeader profile={profile} style={style} />
         )}
