@@ -28,7 +28,7 @@ function ViewMode({ hasPOS, style, isGridView, setIsGridView }) {
             {hasPOS && (
               <IconButton onClick={openCart}>
                 <BsCartPlusFill color={style?.color} size={22} />
-                {cartTotalItem}
+                <span style={{ color: style?.color }}>{cartTotalItem}</span>
               </IconButton>
             )}
           </div>
