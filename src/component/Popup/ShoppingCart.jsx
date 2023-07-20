@@ -70,7 +70,7 @@ function ShoppingCart({ open, setOpen, onClose }) {
                 <Typography variant='h4'>Cart is empty.</Typography>
                 <Image
                   alt='cover'
-                  src='assets/empty1.webp'
+                  src='/assets/empty1.webp'
                   sx={{ height: 150 }}
                 />
               </Stack>
