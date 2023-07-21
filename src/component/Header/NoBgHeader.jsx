@@ -45,9 +45,9 @@ function NoBgHeader({ profile, style }) {
               >
                 {name}
               </h1>
-              <span>
+              <p>
                 <IoMdContact /> {mobile}
-              </span>
+              </p>
               <p>
                 <FaAddressBook /> {city} {address}, {country}
               </p>
