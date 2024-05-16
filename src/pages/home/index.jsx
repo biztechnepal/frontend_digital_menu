@@ -95,6 +95,10 @@ function Home() {
   //   </>
   //   )
   // }
+
+  // return (
+  //   <h1>Menu App</h1>
+  // )
 }
 
 export default Home;

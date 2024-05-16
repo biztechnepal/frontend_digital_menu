@@ -38,7 +38,7 @@ export default function Router() {
     // },
     // Main Routes
     {
-      path: '*',
+      path: '/error',
       element: <ErrorPage />,
     },
   ]);
