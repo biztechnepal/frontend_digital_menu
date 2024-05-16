@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { HOST_API } from './config';
+import axios from "axios";
+import { HOST_API } from "./config";
 const axiosInstance = axios.create({
   baseURL: HOST_API,
 });
@@ -9,7 +9,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     const response = error.response;
     if (response.status === 413) {
-      alert('File Size Is Too Large');
+      alert("File Size Is Too Large");
     }
     // if (response.status === 400) {
     //   window.location.href = '/menu/error';
@@ -19,6 +19,7 @@ axiosInstance.interceptors.response.use(
   }
 );
 axiosInstance.interceptors.request.use((config) => {
+  config.headers["Content-Type"] = "application/json";
   //   config.headers.Authorization = `${window.localStorage.getItem('accessToken')}`;
   return config;
 });
