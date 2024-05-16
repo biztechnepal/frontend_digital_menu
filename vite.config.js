@@ -6,14 +6,14 @@ export default defineConfig({
   emptyOutDir: true,
   plugins: [react()],
   define: {
-    __DEFINES__: {
-      API_URL: "https://qrmenu.gorkhab.com:878", // Define API_URL with a specific value
-    },
+    // __DEFINES__: {
+    //   API_URL: "https://qrmenu.gorkhab.com:878", // Define API_URL with a specific value
+    // },
     "process.env": {},
   },
-  // server:{
-  //   hmr:{
-  //     overlay:false
-  //   }
-  // }
+  server: {
+    hmr: {
+      overlay: false,
+    },
+  },
 });
