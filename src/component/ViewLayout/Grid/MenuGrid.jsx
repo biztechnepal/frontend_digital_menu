@@ -17,7 +17,7 @@ function MenuGrid({ theme, item, style, addToCart, hasPOS, companyId }) {
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
-  const quantity = getItemQuantity(item.id);
+
   return (
     <>
       <div className='col-sm-6 col-md-6 col-lg-6'>
