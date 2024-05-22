@@ -1,10 +1,12 @@
 import axios from "axios";
 import { HOST_API } from "./config";
+// import https from 'https'
+
 const axiosInstance = axios.create({
   baseURL: HOST_API,
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false,
-  }),
+  // httpsAgent: new https.Agent({
+  //   rejectUnauthorized: true,
+  // }),
 });
 
 axiosInstance.interceptors.response.use(
