@@ -8,19 +8,20 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
-  server: {
-    watch: {
-      usePolling: false,
-      interval: 100,
-      proxy: {
-        "/api": {
-          target: "https://hpmt.net",
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
-    },
-  },
+  // server: {
+  //   hmr: false,
+  //   watch: {
+  //     usePolling: false,
+  //     interval: 100,
+  //     proxy: {
+  //       "/api": {
+  //         target: "https://hpmt.net",
+  //         changeOrigin: true,
+  //         rewrite: (path) => path.replace(/^\/api/, ""),
+  //       },
+  //     },
+  //   },
+  // },
   // server: {
   //   proxy: {
   //     "/api": {
