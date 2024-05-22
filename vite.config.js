@@ -12,8 +12,17 @@ export default defineConfig({
     "process.env": {},
   },
   server: {
-    hmr: {
-      overlay: false,
+    proxy: {
+      "/api": {
+        target: "https://qrmenu.gorkhab.com:877",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
     },
   },
+  // server: {
+  //   hmr: {
+  //     overlay: false,
+  //   },
+  // },
 });
