@@ -12,6 +12,13 @@ export default defineConfig({
     watch: {
       usePolling: false,
       interval: 100,
+      proxy: {
+        "/api": {
+          target: "https://hpmt.net",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
     },
   },
   // server: {
