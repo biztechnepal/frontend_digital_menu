@@ -2,10 +2,10 @@
 // http://52.221.216.231/QrMenuAdmin/WebApi
 // https://qrmenu.gorkhab.com:877/QrMenuCompany/WebApi/Auth/Login
 // HOST_API
-// export const COMPANY_API_ROUTE_NAME = "QrMenuCompany/WebApi";
-// export const ADMIN = "QrMenuAdmin/WebApi";
-export const COMPANY_API_ROUTE_NAME = "QrMenuCompany";
-export const ADMIN = "QrMenuAdmin";
+export const COMPANY_API_ROUTE_NAME = "QrMenuCompany/WebApi";
+export const ADMIN = "QrMenuAdmin/WebApi";
+// export const COMPANY_API_ROUTE_NAME = "QrMenuCompany";
+// export const ADMIN = "QrMenuAdmin";
 
 // COMPANIES ROUTES
 export const ENDPOINTS = {
