@@ -8,6 +8,12 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  server: {
+    watch: {
+      usePolling: false,
+      interval: 100,
+    },
+  },
   // server: {
   //   proxy: {
   //     "/api": {
